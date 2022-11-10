@@ -1,0 +1,135 @@
+@import "~@fontsource/roboto";
+@import "~@fontsource/lato";
+
+.main {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content .title {
+    color: #C6F985;
+    padding: 1rem 1rem 0rem 5rem;
+    font-family: "Roboto";
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.content .subtitle {
+    color: #C6F985;
+    padding: 1rem 5rem 1rem 5rem;
+
+    font-family: "Lato";
+    font-size: 24px;
+    font-weight: 400;
+
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.content .text-box {
+    color: aliceblue;
+    padding-left: 5rem;
+    text-decoration: none;
+    font-family: "Lato";
+    font-size: 18px;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 169px;
+    width: 700px;
+    border-radius: nullpx;
+
+
+}
+
+.content .button-row {
+    display: flex;
+    padding: 7rem 5rem 1rem 10rem;
+    max-width: 700px;
+    align-content: space-between;
+}
+
+.btn-demo {
+    margin: 5px;
+    border-radius: 32px;
+    border: 1px solid #fbfbfb;
+    padding: 10px 70px;
+    color: rgb(0, 0, 0);
+    outline: none;
+    background-color: #c6f985;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+}
+
+.btn-demo:hover {
+    transition: all 0.2s ease-in-out;
+    background: #ffffff;
+    color: #000;
+}
+
+.btn-contact {
+    margin: 5px;
+    border-radius: 32px;
+    border: 1px solid #fbfbfb;
+    padding: 10px 70px;
+    color: rgb(255, 255, 255);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    background: none;
+}
+
+.btn-contact:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: #c6f985;
+    color: #000;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: -1;
+    /* background-color: #000000cc; */
+}

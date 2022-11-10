@@ -1,0 +1,83 @@
+@import "~@fontsource/josefin-sans";
+@import "~@fontsource/lato";
+
+.navigation-container {
+    background: #000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    min-width: 1920px;
+    padding: 0px 200px 0px 200px;
+
+}
+
+.navigation-brand {
+    color: white;
+    font-family: "Josefin Sans";
+    font-size: 20px;
+    padding-top: 18px;
+    font-weight: 500;
+}
+
+.centered-nav {
+    padding-left: 200px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2px;
+}
+
+.btn-login {
+    margin: 5px;
+    border-radius: 32px;
+    border: 1px solid #fbfbfb;
+    padding: 5px 20px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    background: none;
+
+}
+
+.btn-login:hover {
+    transition: all 0.2s ease-in-out;
+    background: #c6f985;
+    color: #000;
+}
+
+.btn-register {
+    margin: 5px;
+    border-radius: 32px;
+    border: 1px solid #fbfbfb;
+    padding: 5px 20px;
+    background: #c6f985;
+    color: black;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+
+
+}
+
+.btn-register:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #000;
+}
