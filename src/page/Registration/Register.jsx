@@ -1,7 +1,7 @@
 import React from "react";
 import RegBox from "./regbox";
 import "./style.css";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 const Register = () => {
   return (

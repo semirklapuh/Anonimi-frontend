@@ -2,27 +2,36 @@
 @import "~@fontsource/lato";
 
 .navigation-container {
-    background: #000;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
-    min-width: 1920px;
-    padding: 0px 200px 0px 200px;
-
+    height: 64px;
+    min-width: 1000px;
+    padding: 0px 240px 0px 240px;
 }
 
 .navigation-brand {
     color: white;
-    font-family: "Josefin Sans";
-    font-size: 20px;
+    display: flex;
     padding-top: 18px;
+
+    padding-bottom: 20px;
+}
+
+.navigation-brand-txt {
+    font-family: "Josefin Sans";
+    font-size: 22px;
     font-weight: 500;
+    padding: 8px 10px 0 10px;
 }
 
 .centered-nav {
     padding-left: 200px;
+}
+
+.centered-nav-item {
+    margin: 0 10px;
 }
 
 .btn-group {
@@ -47,7 +56,6 @@
     font-size: 16px;
     line-height: 100%;
     background: none;
-
 }
 
 .btn-login:hover {
@@ -72,8 +80,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 100%;
-
-
 }
 
 .btn-register:hover {
