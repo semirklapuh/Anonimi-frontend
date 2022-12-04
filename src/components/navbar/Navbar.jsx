@@ -9,7 +9,7 @@ import { ButtonGroup, Dropdown} from "react-bootstrap";
 export default function NavigationBar() {
   return (
     <>
-      <Navbar bg="dark" variant="dark" className="navigation-container">
+      <Navbar bg="black" variant="dark" className="navigation-container">
         <Container>
           <Navbar.Brand href="#home"
           className="navigation-brand">
@@ -52,12 +52,12 @@ export default function NavigationBar() {
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
               <ButtonGroup className="btn-group">
-                <button className="btn-login">Log in</button>
+                <button className="btn-login">Sign in</button>
                 <Nav.Link href="register">
-                  <button className="btn-register">Try for free</button>{" "}
+                  <button className="btn-register">Try for free</button>
                 </Nav.Link>
 
-                <NavDropdown title="LN" className="btn-login">EN</NavDropdown>
+                <NavDropdown title="LN" className="btn-ln">EN</NavDropdown>
               </ButtonGroup>
             </Navbar.Text>
           </Navbar.Collapse>

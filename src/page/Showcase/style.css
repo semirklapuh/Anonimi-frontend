@@ -2,8 +2,7 @@
 @import "~@fontsource/roboto";
 
 * {
-    margin: 0;
-    padding: 0;
+
     font-family: "Lato";
     text-align: center;
     justify-content: center;
@@ -18,7 +17,8 @@ h1 {
 
 .showcase-section {
     background-color: hsl(189, 86%, 16%);
-    height: 825px;
+    height: 900px;
+    margin-top: 303px;
 }
 
 .showcase-header {
