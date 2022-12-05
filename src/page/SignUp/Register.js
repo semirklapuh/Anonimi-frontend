@@ -271,6 +271,15 @@ const Register = () => {
                   Sign in
                 </Link>
               </div>
+              <br />
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="btn btn-secondary w-100 theme-btn mx-auto"
+                >
+                  Continue with Google
+                </button>
+              </div>
             </div>
           </div>
         </div>
