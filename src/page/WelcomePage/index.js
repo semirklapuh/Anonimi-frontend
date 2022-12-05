@@ -1,4 +1,5 @@
 import React from "react";
+import { Nav } from "react-bootstrap";
 import videoBg from "../../assets/videoBg.mp4";
 import "./style.css";
 
@@ -29,7 +30,10 @@ const Hero = () => {
             </p>
           </div>
           <div className="button-row">
-            <button className="btn-demo">Demo</button>
+            <Nav.Link href="showcase">
+              <button className="btn-demo">Demo</button>
+            </Nav.Link>
+
             <button className="btn-contact">Contact us</button>
           </div>
         </div>

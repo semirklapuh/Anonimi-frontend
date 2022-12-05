@@ -5,8 +5,8 @@
     padding: 0;
     margin: 0;
     width: 100%;
-    height: 825px;
-
+    min-height: 825px;
+    z-index: 0;
 }
 
 video {

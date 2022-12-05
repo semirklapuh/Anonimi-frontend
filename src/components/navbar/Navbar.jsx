@@ -11,7 +11,7 @@ export default function NavigationBar() {
     <>
       <Navbar bg="black" variant="dark" className="navigation-container">
         <Container>
-          <Navbar.Brand href="#home"
+          <Navbar.Brand href="home"
           className="navigation-brand">
             <img
               alt=""
@@ -52,7 +52,10 @@ export default function NavigationBar() {
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
               <ButtonGroup className="btn-group">
-                <button className="btn-login">Sign in</button>
+                <Nav.Link href="login">
+                  <button className="btn-login">Sign in</button>
+                  </Nav.Link>
+                
                 <Nav.Link href="register">
                   <button className="btn-register">Try for free</button>
                 </Nav.Link>

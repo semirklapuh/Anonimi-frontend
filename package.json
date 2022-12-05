@@ -8,6 +8,7 @@
     "@fontsource/josefin-sans": "^4.5.11",
     "@fontsource/lato": "^4.5.10",
     "@fontsource/roboto": "^4.5.8",
+    "@fortawesome/fontawesome-free": "^6.2.1",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@mui/styled-engine-sc": "^5.10.16",
@@ -25,6 +26,7 @@
     "react-form-stepper": "^2.0.3",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "sass": "^1.56.1",
     "styled-components": "^5.3.6",
     "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
@@ -52,5 +54,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.2",
+    "node-sass": "^8.0.0",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0"
   }
 }

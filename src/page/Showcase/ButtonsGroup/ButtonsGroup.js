@@ -17,10 +17,7 @@ const ButtonsGroup = () => {
         </Button>
       </ButtonGroup>
       <div className="row">
-        <FormControlLabel
-          control={<Switch defaultChecked />}
-          label="Anonymize"
-        />
+        <FormControlLabel control={<Switch />} label="Anonymize" />
       </div>
     </div>
   );

@@ -8,9 +8,7 @@ const Main = () => {
       <div>
         <Hero />
       </div>
-      <div>
-        <Hero />
-      </div>
+
       <div>
         <Showcase />
       </div>
