@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { async } from "react-advanced-form";
 import { Link } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
 import "./style.css";
@@ -11,6 +12,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+
+  const axios = require("axios");
 
   const validateRegister = () => {
     let isValid = true;
@@ -67,6 +70,27 @@ const Register = () => {
     }
   };
 
+  const submitUser = async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+    };
+
+    await axios
+      .post(
+        "http://ec2-34-254-191-235.eu-west-1.compute.amazonaws.com:8000/api/v1/user/signin",
+        JSON.stringify(userData)
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+
   const togglePassword = (e) => {
     if (showPassword) {
       setShowPassword(false);
@@ -85,7 +109,7 @@ const Register = () => {
               <form
                 className="auth-form"
                 method="POST"
-                onSubmit={register}
+                onSubmit={submitUser}
                 autoComplete={"off"}
               >
                 <div className="name mb-3">

@@ -48,6 +48,25 @@ const Login = () => {
       alert("Successfully Login");
     }
   };
+  const axios = require("axios");
+
+  const submitUser = async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      email: email,
+      password: password,
+    };
+
+    await axios
+      .post(
+        "http://ec2-34-254-191-235.eu-west-1.compute.amazonaws.com:8000/api/v1/user/login",
+        JSON.stringify(userData)
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
 
   const togglePassword = (e) => {
     if (showPassword) {
@@ -67,7 +86,7 @@ const Login = () => {
               <form
                 className="auth-form"
                 method="POST"
-                onSubmit={authenticate}
+                onSubmit={submitUser}
                 autoComplete={"off"}
               >
                 <div className="email mb-3">
