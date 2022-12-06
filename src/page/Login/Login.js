@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
+import apiClient from "../../http/http-common";
 import "./style.css";
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
   const [remember, setRemember] = useState(false);
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const form = useRef();
 
   const validateLogin = () => {
     let isValid = true;
@@ -58,9 +60,9 @@ const Login = () => {
       password: password,
     };
 
-    await axios
+    await apiClient
       .post(
-        "http://ec2-34-254-191-235.eu-west-1.compute.amazonaws.com:8000/api/v1/user/login",
+        "/user/login",
         JSON.stringify(userData)
       )
       .then((res) => {
@@ -88,6 +90,7 @@ const Login = () => {
                 method="POST"
                 onSubmit={submitUser}
                 autoComplete={"off"}
+                ref={form}
               >
                 <div className="email mb-3">
                   <input
