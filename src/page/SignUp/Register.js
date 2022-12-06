@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { async } from "react-advanced-form";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
+import apiClient from "../../http/http-common";
+
 import "./style.css";
 
 const Register = () => {
@@ -12,8 +13,9 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const form = useRef();
 
-  const axios = require("axios");
+  
 
   const validateRegister = () => {
     let isValid = true;
@@ -54,6 +56,7 @@ const Register = () => {
     return isValid;
   };
 
+
   const register = (e) => {
     e.preventDefault();
 
@@ -73,22 +76,24 @@ const Register = () => {
   const submitUser = async (e) => {
     e.preventDefault();
 
-    const userData = {
+     const userData = {
       first_name: firstName,
       last_name: lastName,
       email: email,
       password: password,
-      confirmPassword: confirmPassword,
+      confirmPassword:  password,
     };
+    console.log(userData)
 
-    await axios
+    await apiClient
       .post(
-        "http://ec2-34-254-191-235.eu-west-1.compute.amazonaws.com:8000/api/v1/user/signin",
+        "/user/signin",
         JSON.stringify(userData)
       )
       .then((res) => {
         console.log(res.data);
-      });
+      }); 
+      
   };
 
   const togglePassword = (e) => {
@@ -111,6 +116,7 @@ const Register = () => {
                 method="POST"
                 onSubmit={submitUser}
                 autoComplete={"off"}
+                ref={form}
               >
                 <div className="name mb-3">
                   <input
