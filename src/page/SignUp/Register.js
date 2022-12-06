@@ -15,88 +15,54 @@ const Register = () => {
 
   const axios = require("axios");
 
-  const validateRegister = () => {
-    let isValid = true;
-
-    let validator = Form.validator({
-      firstName: {
-        value: firstName,
-        isRequired: true,
-      },
-      lastName: {
-        value: lastName,
-        isRequired: true,
-      },
-      email: {
-        value: email,
-        isRequired: true,
-        isEmail: true,
-      },
-      password: {
-        value: password,
-        isRequired: true,
-        minLength: 6,
-      },
-      confirmPassword: {
-        value: confirmPassword,
-        isRequired: true,
-        minLength: 6,
-      },
-    });
-
-    if (validator !== null) {
-      setValidate({
-        validate: validator.errors,
-      });
-
-      isValid = false;
-    }
-    return isValid;
-  };
-
-  const register = (e) => {
-    e.preventDefault();
-
-    const validate = validateRegister();
-
-    if (validate) {
-      setValidate({});
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      alert("Successfully Register User");
-    }
-  };
-
-  const submitUser = async (e) => {
-    e.preventDefault();
-
-    const userData = {
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-    };
-
-    await axios
-      .post(
-        "http://ec2-34-254-191-235.eu-west-1.compute.amazonaws.com:8000/api/v1/user/signin",
-        JSON.stringify(userData)
-      )
-      .then((res) => {
-        console.log(res.data);
-      });
-  };
-
   const togglePassword = (e) => {
     if (showPassword) {
       setShowPassword(false);
     } else {
       setShowPassword(true);
     }
+  };
+  const handleFirstNameChange = (value) => {
+    setFirstName(value);
+  };
+  const handleLastNameChange = (value) => {
+    setLastName(value);
+  };
+  const handleEmailChange = (value) => {
+    setEmail(value);
+  };
+  const handlePasswordChange = (value) => {
+    setPassword(value);
+  };
+  const handleConfirmationPasswordChange = (value) => {
+    setConfirmPassword(value);
+  };
+  const handleSave = () => {
+    const data = {
+      firstName: firstName,
+      lastName: lastName,
+      username: email,
+      password: password,
+      confirmationPassword: confirmPassword,
+      signinType: 3,
+    };
+    const url =
+      "http://ec2-34-254-191-235.eu-west-1.compute.amazonaws.com:8000/api/v1/user/signin";
+    axios
+      .post(url, {
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        data: data,
+      })
+      .then((result) => {
+        console.log(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -106,109 +72,52 @@ const Register = () => {
           <div className="auth-body mx-auto">
             <p>Create your Account</p>
             <div className="auth-form-container text-start">
-              <form
-                className="auth-form"
-                method="POST"
-                onSubmit={submitUser}
-                autoComplete={"off"}
-              >
+              <form className="auth-form">
                 <div className="name mb-3">
                   <input
                     type="text"
-                    className={`form-control ${
-                      validate.validate && validate.validate.name
-                        ? "is-invalid "
-                        : ""
-                    }`}
+                    className="form-control"
                     id="firstName"
                     name="firstName"
                     value={firstName}
                     placeholder="First name"
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={(e) => handleFirstNameChange(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.firstName
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.firstName
-                      ? validate.validate.firstName[0]
-                      : ""}
-                  </div>
                 </div>
                 <div className="name mb-3">
                   <input
                     type="text"
-                    className={`form-control ${
-                      validate.validate && validate.validate.name
-                        ? "is-invalid "
-                        : ""
-                    }`}
+                    className="form-control"
                     id="lastName"
                     name="lastName"
                     value={lastName}
                     placeholder="Last name"
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={(e) => handleLastNameChange(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.lastName
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.lastName
-                      ? validate.validate.lastName[0]
-                      : ""}
-                  </div>
                 </div>
 
                 <div className="email mb-3">
                   <input
                     type="email"
-                    className={`form-control ${
-                      validate.validate && validate.validate.email
-                        ? "is-invalid "
-                        : ""
-                    }`}
+                    className="form-control"
                     id="email"
                     name="email"
                     value={email}
                     placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => handleEmailChange(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.email
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.email
-                      ? validate.validate.email[0]
-                      : ""}
-                  </div>
                 </div>
 
                 <div className="password mb-3">
                   <div className="input-group">
                     <input
                       type={showPassword ? "text" : "password"}
-                      className={`form-control ${
-                        validate.validate && validate.validate.password
-                          ? "is-invalid "
-                          : ""
-                      }`}
+                      className="form-control"
                       name="password"
                       id="password"
                       value={password}
                       placeholder="Password"
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e) => handlePasswordChange(e.target.value)}
                     />
 
                     <button
@@ -222,34 +131,20 @@ const Register = () => {
                         }
                       ></i>{" "}
                     </button>
-
-                    <div
-                      className={`invalid-feedback text-start ${
-                        validate.validate && validate.validate.password
-                          ? "d-block"
-                          : "d-none"
-                      }`}
-                    >
-                      {validate.validate && validate.validate.password
-                        ? validate.validate.password[0]
-                        : ""}
-                    </div>
                   </div>
 
                   <div className="password mb-3 mt-3">
                     <div className="input-group">
                       <input
                         type={showPassword ? "text" : "password"}
-                        className={`form-control ${
-                          validate.validate && validate.validate.password
-                            ? "is-invalid "
-                            : ""
-                        }`}
+                        className="form-control"
                         name="password"
                         id="confirmPassword"
                         value={confirmPassword}
                         placeholder="Confirm password"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        onChange={(e) =>
+                          handleConfirmationPasswordChange(e.target.value)
+                        }
                       />
 
                       <button
@@ -263,18 +158,6 @@ const Register = () => {
                           }
                         ></i>{" "}
                       </button>
-
-                      <div
-                        className={`invalid-feedback text-start ${
-                          validate.validate && validate.validate.password
-                            ? "d-block"
-                            : "d-none"
-                        }`}
-                      >
-                        {validate.validate && validate.validate.password
-                          ? validate.validate.password[0]
-                          : ""}
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -298,6 +181,7 @@ const Register = () => {
               <br />
               <div className="text-center">
                 <button
+                  onClick={() => handleSave()}
                   type="submit"
                   className="btn btn-secondary w-100 theme-btn mx-auto"
                 >

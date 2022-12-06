@@ -5,8 +5,9 @@ import NavigationBar from "./components/navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Register from "./page/SignUp/Register";
 import Main from "./page/Main";
-import Login from "./page/Login/Login";
+import Login from "./page/Login/Login2";
 import Forgot from "./page/ForgotPass/Forgot";
+import Registration from "./page/SignUp/Registration2";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/home" element={<Main />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<Forgot />} />
       </Routes>

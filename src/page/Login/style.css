@@ -1,7 +1,16 @@
 .auth-body {
     background-color: black;
     min-height: 500px;
+    width: 400px;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.form-control {
+    margin: 10px 10px;
+    max-width: 250px;
+    text-align: left;
 }
