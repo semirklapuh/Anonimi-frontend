@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import upload from "../../../assets/upload.png";
+import apiClient from "../../../http/http-common";
+import Dropdowns from "./Dropdowns/Dropdowns";
+
 function removeItems(arr, item) {
   for (var i = 0; i < item; i++) {
     arr.pop();
@@ -20,8 +23,10 @@ function useFiles({ initialState = [], maxFiles }) {
           console.log("ok");
           console.log("image");
           file.preview = URL.createObjectURL(file);
+
           const base64 = convertToBase64(file);
           console.log(base64);
+
           return file;
         }
         console.log("not image");
@@ -46,6 +51,16 @@ const convertToBase64 = (file) => {
     fileReader.onerror = (error) => {
       reject(error);
     };
+  });
+};
+
+const submitAnonymize = async (e) => {
+  e.preventDefault();
+
+  const imageData = {};
+
+  await apiClient.post("/user/add", JSON.stringify(imageData)).then((res) => {
+    console.log(res.data);
   });
 };
 
@@ -100,6 +115,9 @@ function Upload({ onDrop, maxFiles = 1 }) {
             setfiles(e.target.files);
           }}
         />
+      </div>
+      <div>
+        <Dropdowns />
       </div>
       {/* <div className="blob-container">
         <h2>File Previews</h2>
