@@ -39,19 +39,6 @@ const Forgot = () => {
       setEmail("");
     }
   };
-  const forgotPassword = async (e) => {
-    e.preventDefault();
-
-    const userData = {
-      username: email,
-    };
-
-    await apiClient
-      .post("/user/verify-login", JSON.stringify(userData))
-      .then((res) => {
-        console.log(res.data);
-      });
-  };
 
   return (
     <div className="row g-0 auth-wrapper">
@@ -63,7 +50,7 @@ const Forgot = () => {
               <form
                 className="auth-form"
                 method="POST"
-                onSubmit={forgotPassword}
+                onSubmit={forgotPass}
                 autoComplete={"off"}
               >
                 <div className="email mb-3">

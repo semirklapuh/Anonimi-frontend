@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
 import apiClient from "../../http/http-common";
 import "./style.css";
@@ -50,7 +50,6 @@ const Login = () => {
       alert("Successfully Login");
     }
   };
-  const axios = require("axios");
 
   const submitUser = async (e) => {
     e.preventDefault();

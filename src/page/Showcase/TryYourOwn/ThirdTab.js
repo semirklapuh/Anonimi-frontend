@@ -9,12 +9,9 @@ const ThirdTab = () => {
     <div className="ThirdTab">
       <Upload
         onDrop={(files) => {
-          console.log("uspjesno");
+          console.log("pokusaj");
         }}
       />
-      <div>
-        <Dropdowns />
-      </div>
     </div>
   );
 };
