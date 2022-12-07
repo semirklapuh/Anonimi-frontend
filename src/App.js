@@ -5,9 +5,9 @@ import NavigationBar from "./components/navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Register from "./page/SignUp/Register";
 import Main from "./page/Main";
-import Login from "./page/Login/Login2";
+import Login from "./page/Login/Login";
 import Forgot from "./page/ForgotPass/Forgot";
-import Registration from "./page/SignUp/Registration2";
+import Registration from "./page/SignUp/Register";
 
 function App() {
   return (

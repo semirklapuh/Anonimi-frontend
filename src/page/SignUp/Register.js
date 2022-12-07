@@ -15,8 +15,6 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const form = useRef();
 
-  
-
   const validateRegister = () => {
     let isValid = true;
 
@@ -56,7 +54,6 @@ const Register = () => {
     return isValid;
   };
 
-
   const register = (e) => {
     e.preventDefault();
 
@@ -76,24 +73,21 @@ const Register = () => {
   const submitUser = async (e) => {
     e.preventDefault();
 
-     const userData = {
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
+    const userData = {
+      firstName: firstName,
+      lastName: lastName,
+      username: email,
       password: password,
-      confirmPassword:  password,
+      confirmationPassword: confirmPassword,
+      signinTypeId: 3,
     };
-    console.log(userData)
+    console.log(userData);
 
     await apiClient
-      .post(
-        "/user/signin",
-        JSON.stringify(userData)
-      )
+      .post("/user/signin", JSON.stringify(userData))
       .then((res) => {
         console.log(res.data);
-      }); 
-      
+      });
   };
 
   const togglePassword = (e) => {
