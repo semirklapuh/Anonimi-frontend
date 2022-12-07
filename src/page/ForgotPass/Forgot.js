@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
+import apiClient from "../../http/http-common";
 
 const Forgot = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ const Forgot = () => {
     return isValid;
   };
 
-  const forgotPassword = (e) => {
+  const forgotPass = (e) => {
     e.preventDefault();
 
     const validate = validateforgotPassword();
@@ -37,6 +38,19 @@ const Forgot = () => {
       setValidate({});
       setEmail("");
     }
+  };
+  const forgotPassword = async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      username: email,
+    };
+
+    await apiClient
+      .post("/user/verify-login", JSON.stringify(userData))
+      .then((res) => {
+        console.log(res.data);
+      });
   };
 
   return (

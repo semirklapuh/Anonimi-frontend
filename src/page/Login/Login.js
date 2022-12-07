@@ -63,7 +63,7 @@ const Login = () => {
     await apiClient
       .post("/user/verify-login", JSON.stringify(userData))
       .then((res) => {
-        console.log(res.data);
+        localStorage.setItem("user", res.data.token);
       });
   };
 
