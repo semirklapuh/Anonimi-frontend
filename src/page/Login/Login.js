@@ -56,15 +56,12 @@ const Login = () => {
     e.preventDefault();
 
     const userData = {
-      email: email,
+      username: email,
       password: password,
     };
 
     await apiClient
-      .post(
-        "/user/login",
-        JSON.stringify(userData)
-      )
+      .post("/user/verify-login", JSON.stringify(userData))
       .then((res) => {
         console.log(res.data);
       });
