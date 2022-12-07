@@ -8,6 +8,7 @@ import Main from "./page/Main";
 import Login from "./page/Login/Login";
 import Forgot from "./page/ForgotPass/Forgot";
 import Registration from "./page/SignUp/Register";
+import Tasks from "./page/AdminPanel/Tasks";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<Forgot />} />
+        <Route path="/tasks" element={<Tasks />} />
       </Routes>
     </div>
   );
