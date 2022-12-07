@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import upload from "./upload.png";
+import upload from "../../../assets/upload.png";
 function removeItems(arr, item) {
   for (var i = 0; i < item; i++) {
     arr.pop();
@@ -20,6 +20,8 @@ function useFiles({ initialState = [], maxFiles }) {
           console.log("ok");
           console.log("image");
           file.preview = URL.createObjectURL(file);
+          const base64 = convertToBase64(file);
+          console.log(base64);
           return file;
         }
         console.log("not image");
@@ -32,6 +34,21 @@ function useFiles({ initialState = [], maxFiles }) {
   return [state, withBlobs];
 }
 
+const convertToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+};
+
 function Upload({ onDrop, maxFiles = 1 }) {
   const [over, setover] = useState(false);
   const [files, setfiles] = useFiles({ maxFiles });
@@ -41,7 +58,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
     if (onDrop) {
       onDrop(files);
     }
-  }, [files]);
+  }, [files, onDrop]);
 
   return (
     <>
