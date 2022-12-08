@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Button, Dropdown } from "react-bootstrap";
 import upload from "../../../assets/upload.png";
 import apiClient from "../../../http/http-common";
 import Dropdowns from "./Dropdowns/Dropdowns";
@@ -54,26 +55,69 @@ const convertToBase64 = (file) => {
   });
 };
 
-const submitAnonymize = async (e) => {
-  e.preventDefault();
-
-  const imageData = {};
-
-  await apiClient.post("/user/add", JSON.stringify(imageData)).then((res) => {
-    console.log(res.data);
-  });
-};
-
 function Upload({ onDrop, maxFiles = 1 }) {
   const [over, setover] = useState(false);
   const [files, setfiles] = useFiles({ maxFiles });
   const $input = useRef(null);
+  const [faces, setFaces] = useState(false);
+  const [plates, setPlates] = useState(false);
+  const [blur, setBlur] = useState(false);
+  const [pixelated, setPixelated] = useState(false);
+  const [deepNatural, setDeepNatural] = useState(false);
+  const [typeMode, selectTypeMode] = useState("");
+  const [watermark, setWatermark] = useState(false);
+
+  const handleSelectObject = (e) => {
+    if (e === "faces") {
+      setFaces(true);
+      setPlates(false);
+    } else {
+      setFaces(false);
+      setPlates(true);
+    }
+    console.log(e);
+  };
+
+  const handleSelectTypeMode = (e) => {
+    if (e === "blur") {
+      setBlur(true);
+      setPixelated(false);
+      setDeepNatural(false);
+      selectTypeMode("blur");
+    } else if (e === "pixelated") {
+      setBlur(false);
+      setPixelated(true);
+      setDeepNatural(false);
+    } else {
+      setBlur(false);
+      setPixelated(false);
+      setDeepNatural(true);
+    }
+    console.log(e);
+  };
 
   useEffect(() => {
     if (onDrop) {
       onDrop(files);
     }
   }, [files, onDrop]);
+
+  const submitAnonymize = async (e) => {
+    e.preventDefault();
+
+    const imageData = {
+      image: "",
+      faces: false,
+      plates: false,
+      watermark: false,
+    };
+
+    await apiClient
+      .post("/image/upload-image", JSON.stringify(imageData))
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
 
   return (
     <>
@@ -117,7 +161,41 @@ function Upload({ onDrop, maxFiles = 1 }) {
         />
       </div>
       <div>
-        <Dropdowns />
+        <div className="dropdowns">
+          <Dropdown
+            className="d-inline mx-2"
+            autoClose="outside"
+            onSelect={handleSelectObject}
+          >
+            <Dropdown.Toggle id="dropdown-autoclose-inside">
+              Object
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item eventKey="faces">Faces</Dropdown.Item>
+              <Dropdown.Item eventKey="plates">Licence plates</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown
+            className="d-inline mx-2"
+            autoClose="outside"
+            onSelect={handleSelectTypeMode}
+          >
+            <Dropdown.Toggle id="dropdown-autoclose-inside">
+              Mode
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item eventKey="blur">Blur</Dropdown.Item>
+              <Dropdown.Item eventKey="pixelated">Pixelated</Dropdown.Item>
+              <Dropdown.Item eventKey="deepNatural">Deep natural</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <div className="btn-div">
+            <Button onClick={submitAnonymize}>Anonymize</Button>
+          </div>
+        </div>
       </div>
       {/* <div className="blob-container">
         <h2>File Previews</h2>

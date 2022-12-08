@@ -56,3 +56,14 @@ p {
     position: fixed;
 
 }
+
+.dropdowns {
+    margin: 50px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdown, .btn-div {
+    padding: 20px
+}
