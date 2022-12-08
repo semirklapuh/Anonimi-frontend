@@ -110,6 +110,22 @@ function Upload({ onDrop, maxFiles = 1 }) {
     return [state, withBlobs];
   }
 
+  const handleFileInputChange = (e) => {
+    let files = Array.from(e.target.files);
+    files.map((file) => {
+      convertToBase64(file)
+        .then((result) => {
+          file["base64"] = result;
+          file["isMain"] = false;
+          setImageUrl([file]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  };
+
+  //malo izmjenjen
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -121,6 +137,22 @@ function Upload({ onDrop, maxFiles = 1 }) {
 
       fileReader.onerror = (error) => {
         reject(error);
+      };
+    });
+  };
+
+  //od abstract frontend
+
+  const convertToB = (file) => {
+    return new Promise((resolve) => {
+      let baseURL = "";
+      let reader = new FileReader();
+
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        baseURL = reader.result;
+        resolve(baseURL);
       };
     });
   };
@@ -162,7 +194,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
           accept="image/*"
           ref={$input}
           onChange={(e) => {
-            setfiles(e.target.files);
+            handleFileInputChange(e.target.files);
           }}
         />
       </div>
