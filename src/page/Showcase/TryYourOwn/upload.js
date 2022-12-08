@@ -10,88 +10,48 @@ function removeItems(arr, item) {
   }
 }
 
-function useFiles({ initialState = [], maxFiles }) {
-  const [state, setstate] = useState(initialState);
-  function withBlobs(files) {
-    const destructured = [...files];
-    if (destructured.length > maxFiles) {
-      const difference = destructured.length - maxFiles;
-      removeItems(destructured, difference);
-    }
-    const blobs = destructured
-      .map((file) => {
-        if (file.type.includes("image")) {
-          console.log("ok");
-          console.log("image");
-          file.preview = URL.createObjectURL(file);
-
-          const base64 = convertToBase64(file);
-          console.log(base64);
-
-          return file;
-        }
-        console.log("not image");
-        return null;
-      })
-      .filter((elem) => elem !== null);
-
-    setstate(blobs);
-  }
-  return [state, withBlobs];
-}
-
-const convertToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};
-
 function Upload({ onDrop, maxFiles = 1 }) {
   const [over, setover] = useState(false);
   const [files, setfiles] = useFiles({ maxFiles });
   const $input = useRef(null);
-  const [faces, setFaces] = useState(false);
-  const [plates, setPlates] = useState(false);
-  const [blur, setBlur] = useState(false);
-  const [pixelated, setPixelated] = useState(false);
-  const [deepNatural, setDeepNatural] = useState(false);
+  const [faces, setFaces] = useState("False");
+  const [plates, setPlates] = useState("False");
+  const [blur, setBlur] = useState("False");
+  const [pixelated, setPixelated] = useState("False");
+  const [deepNatural, setDeepNatural] = useState("False");
   const [typeMode, selectTypeMode] = useState("");
-  const [watermark, setWatermark] = useState(false);
+  const [imageUrl, setImageUrl] = useState();
 
   const handleSelectObject = (e) => {
     if (e === "faces") {
-      setFaces(true);
-      setPlates(false);
+      setFaces("True");
+      setPlates("False");
     } else {
-      setFaces(false);
-      setPlates(true);
+      setFaces("False");
+      setPlates("True");
     }
     console.log(e);
   };
 
   const handleSelectTypeMode = (e) => {
     if (e === "blur") {
-      setBlur(true);
-      setPixelated(false);
-      setDeepNatural(false);
+      setBlur("True");
+      setPixelated("False");
+      setDeepNatural("False");
+
       selectTypeMode("blur");
     } else if (e === "pixelated") {
-      setBlur(false);
-      setPixelated(true);
-      setDeepNatural(false);
+      setBlur("False");
+      setPixelated("True");
+      setDeepNatural("False");
+
+      selectTypeMode("pixelated");
     } else {
-      setBlur(false);
-      setPixelated(false);
-      setDeepNatural(true);
+      setBlur("False");
+      setPixelated("False");
+      setDeepNatural("True");
+
+      selectTypeMode("synthetic");
     }
     console.log(e);
   };
@@ -106,10 +66,11 @@ function Upload({ onDrop, maxFiles = 1 }) {
     e.preventDefault();
 
     const imageData = {
-      image: "",
-      faces: false,
-      plates: false,
+      image: imageUrl,
+      faces: faces,
+      plates: plates,
       watermark: false,
+      mode: typeMode,
     };
 
     await apiClient
@@ -117,6 +78,51 @@ function Upload({ onDrop, maxFiles = 1 }) {
       .then((res) => {
         console.log(res.data);
       });
+  };
+
+  function useFiles({ initialState = [], maxFiles }) {
+    const [state, setstate] = useState(initialState);
+    function withBlobs(files) {
+      const destructured = [...files];
+      if (destructured.length > maxFiles) {
+        const difference = destructured.length - maxFiles;
+        removeItems(destructured, difference);
+      }
+      const blobs = destructured
+        .map((file) => {
+          if (file.type.includes("image")) {
+            file.preview = URL.createObjectURL(file);
+
+            const base64 = convertToBase64(file);
+
+            setImageUrl(base64);
+            console.log(imageUrl);
+
+            return file;
+          }
+          console.log("not image");
+          return null;
+        })
+        .filter((elem) => elem !== null);
+
+      setstate(blobs);
+    }
+    return [state, withBlobs];
+  }
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
   };
 
   return (
@@ -164,7 +170,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
         <div className="dropdowns">
           <Dropdown
             className="d-inline mx-2"
-            autoClose="outside"
+            autoClose="inside"
             onSelect={handleSelectObject}
           >
             <Dropdown.Toggle id="dropdown-autoclose-inside">
