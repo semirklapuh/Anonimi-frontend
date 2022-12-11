@@ -21,6 +21,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
   const [deepNatural, setDeepNatural] = useState("False");
   const [typeMode, selectTypeMode] = useState("");
   const [imageUrl, setImageUrl] = useState();
+  const [dataURL, setDataURL] = useState("");
 
   const handleSelectObject = (e) => {
     if (e === "faces") {
@@ -77,6 +78,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
       .post("/image/upload-image", JSON.stringify(imageData))
       .then((res) => {
         console.log(res.data);
+        setDataURL(res.data.image);
       });
   };
 
@@ -92,10 +94,6 @@ function Upload({ onDrop, maxFiles = 1 }) {
         .map((file) => {
           if (file.type.includes("image")) {
             file.preview = URL.createObjectURL(file);
-
-            //const base64 = getBase64(file);
-            // setImageUrl(base64);
-            // console.log(imageUrl);
 
             return file;
           }
@@ -117,6 +115,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
 
   const onLoad = (fileString) => {
     console.log(fileString);
+
     var base64 = fileString.split(",")[1];
     setImageUrl(base64);
   };
@@ -126,7 +125,6 @@ function Upload({ onDrop, maxFiles = 1 }) {
     reader.readAsDataURL(file);
     reader.onload = () => {
       onLoad(reader.result);
-      //  setImageUrl(reader.result);
     };
   };
 
@@ -188,7 +186,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
 
           <Dropdown
             className="d-inline mx-2"
-            autoClose="outside"
+            autoClose="inside"
             onSelect={handleSelectTypeMode}
           >
             <Dropdown.Toggle id="dropdown-autoclose-inside">
@@ -206,12 +204,9 @@ function Upload({ onDrop, maxFiles = 1 }) {
           </div>
         </div>
       </div>
-      {/* <div className="blob-container">
-        <h2>File Previews</h2>
-        {files.map((file) => (
-          <img key={file.name + "file"} src={file.preview} alt="your file" />
-        ))}
-      </div> */}
+      <div>
+        <img src={`data:image/jpeg;base64,${dataURL}`} alt="dd" />
+      </div>
     </>
   );
 }
