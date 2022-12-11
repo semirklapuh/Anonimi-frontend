@@ -69,7 +69,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
       image: imageUrl,
       faces: faces,
       plates: plates,
-      watermark: false,
+      watermark: "True",
       mode: typeMode,
     };
 
@@ -93,10 +93,9 @@ function Upload({ onDrop, maxFiles = 1 }) {
           if (file.type.includes("image")) {
             file.preview = URL.createObjectURL(file);
 
-            const base64 = convertToBase64(file);
-
-            setImageUrl(base64);
-            console.log(imageUrl);
+            //const base64 = getBase64(file);
+            // setImageUrl(base64);
+            // console.log(imageUrl);
 
             return file;
           }
@@ -111,50 +110,24 @@ function Upload({ onDrop, maxFiles = 1 }) {
   }
 
   const handleFileInputChange = (e) => {
-    let files = Array.from(e.target.files);
-    files.map((file) => {
-      convertToBase64(file)
-        .then((result) => {
-          file["base64"] = result;
-          file["isMain"] = false;
-          setImageUrl([file]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+    const files = e.target.files;
+    const file = files[0];
+    getBase64(file);
   };
 
-  //malo izmjenjen
-  const convertToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
+  const onLoad = (fileString) => {
+    console.log(fileString);
+    var base64 = fileString.split(",")[1];
+    setImageUrl(base64);
   };
 
-  //od abstract frontend
-
-  const convertToB = (file) => {
-    return new Promise((resolve) => {
-      let baseURL = "";
-      let reader = new FileReader();
-
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        baseURL = reader.result;
-        resolve(baseURL);
-      };
-    });
+  const getBase64 = (file) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      onLoad(reader.result);
+      //  setImageUrl(reader.result);
+    };
   };
 
   return (
@@ -193,9 +166,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
           type="file"
           accept="image/*"
           ref={$input}
-          onChange={(e) => {
-            handleFileInputChange(e.target.files);
-          }}
+          onChange={handleFileInputChange}
         />
       </div>
       <div>
