@@ -3,7 +3,6 @@ import { Button, Dropdown } from "react-bootstrap";
 import upload from "../../../assets/upload.png";
 import apiClient from "../../../http/http-common";
 import LoaderSpinner from "../Loader/LoaderSpinner";
-import Dropdowns from "./Dropdowns/Dropdowns";
 
 function removeItems(arr, item) {
   for (var i = 0; i < item; i++) {
@@ -23,7 +22,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
   const [typeMode, selectTypeMode] = useState("");
   const [imageUrl, setImageUrl] = useState();
   const [dataURL, setDataURL] = useState("");
-  const [loaded, setLoaded] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [previewImage, setPreviewImage] = useState(false);
 
   const handleSelectObject = (e) => {
@@ -82,7 +81,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
       .then((res) => {
         console.log(res.data);
         setDataURL(res.data.image);
-        setLoaded(false);
+        setLoading(false);
         setPreviewImage(true);
       });
   };
@@ -113,7 +112,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
   }
 
   const handleFileInputChange = (e) => {
-    setLoaded(false);
+    setLoading(true);
     const files = e.target.files;
     const file = files[0];
     getBase64(file);
@@ -138,7 +137,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
     <>
       {previewImage ? (
         <div className="preview-container">
-          {loaded ? (
+          {loading ? (
             <LoaderSpinner />
           ) : (
             <div className="preview-box">
