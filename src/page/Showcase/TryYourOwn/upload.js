@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Dropdown } from "react-bootstrap";
 import upload from "../../../assets/upload.png";
 import apiClient from "../../../http/http-common";
+import LoaderSpinner from "../Loader/LoaderSpinner";
 import Dropdowns from "./Dropdowns/Dropdowns";
 
 function removeItems(arr, item) {
@@ -22,6 +23,8 @@ function Upload({ onDrop, maxFiles = 1 }) {
   const [typeMode, selectTypeMode] = useState("");
   const [imageUrl, setImageUrl] = useState();
   const [dataURL, setDataURL] = useState("");
+  const [loaded, setLoaded] = useState(true);
+  const [previewImage, setPreviewImage] = useState(false);
 
   const handleSelectObject = (e) => {
     if (e === "faces") {
@@ -79,6 +82,8 @@ function Upload({ onDrop, maxFiles = 1 }) {
       .then((res) => {
         console.log(res.data);
         setDataURL(res.data.image);
+        setLoaded(false);
+        setPreviewImage(true);
       });
   };
 
@@ -108,6 +113,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
   }
 
   const handleFileInputChange = (e) => {
+    setLoaded(false);
     const files = e.target.files;
     const file = files[0];
     getBase64(file);
@@ -130,83 +136,114 @@ function Upload({ onDrop, maxFiles = 1 }) {
 
   return (
     <>
-      <div
-        onClick={() => {
-          $input.current.click();
-        }}
-        onDrop={(e) => {
-          e.preventDefault();
-          e.persist();
-          setfiles(e.dataTransfer.files);
-          setover(false);
-        }}
-        onDragOver={(e) => {
-          e.preventDefault();
-          setover(true);
-        }}
-        onDragLeave={(e) => {
-          e.preventDefault();
-          setover(false);
-        }}
-        className={over ? "upload-container over" : "upload-container"}
-      >
-        <div>
-          <img src={upload} alt="upload" className="upload-icon" />
+      {previewImage ? (
+        <div className="preview-container">
+          {loaded ? (
+            <LoaderSpinner />
+          ) : (
+            <div className="preview-box">
+              <div className="image-box">
+                <img
+                  src={`data:image/jpeg;base64,${imageUrl}`}
+                  alt="dd"
+                  className="preview-image"
+                />
+                <p className="image-text">BEFORE</p>
+              </div>
+              <br></br>
+              <div>
+                <img
+                  src={`data:image/jpeg;base64,${dataURL}`}
+                  alt="dd"
+                  className="preview-image"
+                />
+                <p className="image-text">AFTER</p>
+              </div>
+            </div>
+          )}
         </div>
-        <h2 className="title">Upload files here!</h2>
-        <p>Click to browse or drag and drop</p>
-        <p className="text-type-image">
-          Supported formats: jpeg, jpg, png, avi, mkv... 20MB, 5 images/1 video
-          per session{" "}
-        </p>
-        <input
-          style={{ display: "none" }}
-          type="file"
-          accept="image/*"
-          ref={$input}
-          onChange={handleFileInputChange}
-        />
-      </div>
-      <div>
-        <div className="dropdowns">
-          <Dropdown
-            className="d-inline mx-2"
-            autoClose="inside"
-            onSelect={handleSelectObject}
+      ) : (
+        <div>
+          <div
+            onClick={() => {
+              $input.current.click();
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              e.persist();
+              setfiles(e.dataTransfer.files);
+              setover(false);
+            }}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setover(true);
+            }}
+            onDragLeave={(e) => {
+              e.preventDefault();
+              setover(false);
+            }}
+            className={over ? "upload-container over" : "upload-container"}
           >
-            <Dropdown.Toggle id="dropdown-autoclose-inside">
-              Object
-            </Dropdown.Toggle>
+            <div>
+              <img src={upload} alt="upload" className="upload-icon" />
+            </div>
+            <h2 className="title">Upload files here!</h2>
+            <p>Click to browse or drag and drop</p>
+            <p className="text-type-image">
+              Supported formats: jpeg, jpg, png, avi, mkv... 20MB, 5 images/1
+              video per session{" "}
+            </p>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              accept="image/*"
+              ref={$input}
+              onChange={handleFileInputChange}
+            />
+          </div>
+          <div>
+            <div className="dropdowns">
+              <Dropdown
+                className="d-inline mx-2"
+                autoClose="inside"
+                onSelect={handleSelectObject}
+              >
+                <Dropdown.Toggle id="dropdown-autoclose-inside">
+                  Object
+                </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item eventKey="faces">Faces</Dropdown.Item>
-              <Dropdown.Item eventKey="plates">Licence plates</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+                <Dropdown.Menu>
+                  <Dropdown.Item eventKey="faces">Faces</Dropdown.Item>
+                  <Dropdown.Item eventKey="plates">
+                    Licence plates
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
 
-          <Dropdown
-            className="d-inline mx-2"
-            autoClose="inside"
-            onSelect={handleSelectTypeMode}
-          >
-            <Dropdown.Toggle id="dropdown-autoclose-inside">
-              Mode
-            </Dropdown.Toggle>
+              <Dropdown
+                className="d-inline mx-2"
+                autoClose="inside"
+                onSelect={handleSelectTypeMode}
+              >
+                <Dropdown.Toggle id="dropdown-autoclose-inside">
+                  Mode
+                </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item eventKey="blur">Blur</Dropdown.Item>
-              <Dropdown.Item eventKey="pixelated">Pixelated</Dropdown.Item>
-              <Dropdown.Item eventKey="deepNatural">Deep natural</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <div className="btn-div">
-            <Button onClick={submitAnonymize}>Anonymize</Button>
+                <Dropdown.Menu>
+                  <Dropdown.Item eventKey="blur">Blur</Dropdown.Item>
+                  <Dropdown.Item eventKey="pixelated">Pixelated</Dropdown.Item>
+                  <Dropdown.Item eventKey="deepNatural">
+                    Deep natural
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <div className="btn-div">
+                <Button onClick={submitAnonymize}>Anonymize</Button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <img src={`data:image/jpeg;base64,${dataURL}`} alt="dd" />
-      </div>
+      )}
     </>
   );
 }
