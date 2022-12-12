@@ -1,8 +1,6 @@
 import React from "react";
-import Dropdowns from "./Dropdowns/Dropdowns";
+import { Upload } from "./ImageOperations";
 import "./style.css";
-
-import { Upload } from "./upload";
 
 const ThirdTab = () => {
   return (
