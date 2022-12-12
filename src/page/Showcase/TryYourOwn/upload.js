@@ -3,6 +3,7 @@ import { Button, Dropdown } from "react-bootstrap";
 import upload from "../../../assets/upload.png";
 import apiClient from "../../../http/http-common";
 import LoaderSpinner from "../Loader/LoaderSpinner";
+import Base64Downloader from "react-base64-downloader";
 
 function removeItems(arr, item) {
   for (var i = 0; i < item; i++) {
@@ -140,24 +141,38 @@ function Upload({ onDrop, maxFiles = 1 }) {
           {loading ? (
             <LoaderSpinner />
           ) : (
-            <div className="preview-box">
-              <div className="image-box">
-                <img
-                  src={`data:image/jpeg;base64,${imageUrl}`}
-                  alt="dd"
-                  className="preview-image"
-                />
-                <p className="image-text">BEFORE</p>
+            <div className="preview">
+              <div className="preview-box">
+                <div className="image-box">
+                  <img
+                    src={`data:image/jpeg;base64,${imageUrl}`}
+                    alt="dd"
+                    className="preview-image"
+                  />
+                  <p className="image-text">BEFORE</p>
+                </div>
+                <br></br>
+                <div>
+                  <img
+                    src={`data:image/jpeg;base64,${dataURL}`}
+                    alt="dd"
+                    className="preview-image"
+                  />
+                  <p className="image-text">AFTER</p>
+                </div>
               </div>
-              <br></br>
-              <div>
-                <img
-                  src={`data:image/jpeg;base64,${dataURL}`}
-                  alt="dd"
-                  className="preview-image"
-                />
-                <p className="image-text">AFTER</p>
-              </div>
+              <Base64Downloader
+                base64={`data:image/jpeg;base64,${dataURL}`}
+                downloadName="anonymized"
+                Tag="a"
+                extraAttributes={{ href: "#" }}
+                className="btn btn-primary"
+                style={{ color: "orange" }}
+                onDownloadSuccess={() => console.log("File download initiated")}
+                onDownloadError={() => console.warn("Download failed to start")}
+              >
+                Click to download
+              </Base64Downloader>
             </div>
           )}
         </div>

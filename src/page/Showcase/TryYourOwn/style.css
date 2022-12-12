@@ -68,6 +68,11 @@ p {
     padding: 20px
 }
 
+.preview {
+    display: flex;
+    flex-direction: column;
+}
+
 .preview-image {
     width: 700px;
     height: auto;
