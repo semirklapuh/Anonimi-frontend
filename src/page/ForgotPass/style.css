@@ -5,3 +5,13 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.form-control {
+    margin: 10px 10px;
+    max-width: 250px;
+    text-align: left;
+}
+
+.email {
+    margin-right: 18px;
+}

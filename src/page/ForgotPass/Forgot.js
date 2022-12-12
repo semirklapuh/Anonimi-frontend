@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
 import apiClient from "../../http/http-common";
+import "./style.css";
 
 const Forgot = () => {
   const [email, setEmail] = useState("");
   const [validate, setValidate] = useState({});
+  const form = useRef();
 
   const validateforgotPassword = () => {
     let isValid = true;
@@ -28,16 +30,26 @@ const Forgot = () => {
     return isValid;
   };
 
-  const forgotPass = (e) => {
+  const forgotPass = async (e) => {
     e.preventDefault();
 
-    const validate = validateforgotPassword();
+    /* const validate = validateforgotPassword();
 
     if (validate) {
       alert("Reset password link is sent to " + email);
       setValidate({});
       setEmail("");
-    }
+    } */
+    const userData = {
+      mailTo: email,
+      link: "https://meshmind.io/",
+    };
+
+    await apiClient
+      .post("/user/send-mail-reset-password", JSON.stringify(userData))
+      .then((res) => {
+        console.log(res.data);
+      });
   };
 
   return (
@@ -52,11 +64,12 @@ const Forgot = () => {
                 method="POST"
                 onSubmit={forgotPass}
                 autoComplete={"off"}
+                ref={form}
               >
                 <div className="email mb-3">
                   <input
                     type="email"
-                    className={`form-control ${
+                    className={`form-control email ${
                       validate.validate && validate.validate.email
                         ? "is-invalid "
                         : ""

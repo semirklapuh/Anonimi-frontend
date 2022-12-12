@@ -134,7 +134,7 @@ const Login = () => {
 
                     <button
                       type="button"
-                      className="btn btn-outline-primary btn-sm"
+                      className="btn btn-outline-primary btn-sm btn-icon"
                       onClick={(e) => togglePassword(e)}
                     >
                       <i

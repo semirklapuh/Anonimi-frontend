@@ -1,6 +1,6 @@
 .auth-body {
     background-color: black;
-    min-height: 500px;
+    min-height: 600px;
     width: 400px;
     display: flex;
     justify-content: center;
@@ -13,4 +13,18 @@
     margin: 10px 10px;
     max-width: 250px;
     text-align: left;
+}
+
+.btn-icon {
+    height: 40px;
+    width: 50px;
+
+    margin-top: 8px;
+}
+
+.input-group {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

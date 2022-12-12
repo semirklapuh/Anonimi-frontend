@@ -14,3 +14,14 @@
     max-width: 250px;
     text-align: left;
 }
+
+.btn-icon {
+    height: 40px;
+    width: 50px;
+
+    margin-top: 8px;
+}
+
+.form-check-label {
+    font-size: small;
+}
