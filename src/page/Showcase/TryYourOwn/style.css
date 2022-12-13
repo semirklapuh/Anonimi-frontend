@@ -71,11 +71,12 @@ p {
 .preview {
     display: flex;
     flex-direction: column;
+
 }
 
 .preview-image {
-    width: auto;
-    height: 500px;
+    width: 550px;
+    height: auto;
     padding: 10px;
 }
 
