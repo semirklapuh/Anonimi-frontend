@@ -33,13 +33,13 @@ const Forgot = () => {
   const forgotPass = async (e) => {
     e.preventDefault();
 
-    /* const validate = validateforgotPassword();
+    const validate = validateforgotPassword();
 
     if (validate) {
       alert("Reset password link is sent to " + email);
       setValidate({});
       setEmail("");
-    } */
+    }
     const userData = {
       mailTo: email,
       link: "https://meshmind.io/",
