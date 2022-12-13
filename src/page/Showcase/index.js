@@ -4,7 +4,7 @@ import TabsBox from "./Tabs/TabComponents/TabsBox";
 
 const Showcase = () => {
   return (
-    <div className="showcase-section">
+    <div id="showcase-section" className="showcase-section">
       <div className="showcase-header">
         <h1>Showcase</h1>
         <h5>Use our preview examples to see what Anonimi is all about</h5>

@@ -13,7 +13,7 @@
 /* Tab Container */
 .Tabs {
     width: 90%;
-    max-height: 650px;
+    max-height: auto;
     min-height: 400px;
     background: #053742;
     margin: 1.5rem auto 1.5rem;

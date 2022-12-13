@@ -1,9 +1,15 @@
-import React from "react";
-import { Nav } from "react-bootstrap";
+import React, { useRef } from "react";
 import videoBg from "../../assets/videoBg.mp4";
 import "./style.css";
 
 const Hero = () => {
+  const handleClickScroll = () => {
+    const element = document.getElementById("showcase-section");
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div>
       <div className="overlay">
@@ -30,9 +36,9 @@ const Hero = () => {
             </p>
           </div>
           <div className="button-row">
-            <Nav.Link href="showcase">
-              <button className="btn-demo">Demo</button>
-            </Nav.Link>
+            <button className="btn-demo" onClick={handleClickScroll}>
+              Demo
+            </button>
 
             <button className="btn-contact">Contact us</button>
           </div>

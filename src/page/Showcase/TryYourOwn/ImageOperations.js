@@ -73,7 +73,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
       image: imageUrl,
       faces: faces,
       plates: plates,
-      watermark: "True",
+      watermark: "False",
       mode: typeMode,
     };
 

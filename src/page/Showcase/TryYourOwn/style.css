@@ -74,8 +74,8 @@ p {
 }
 
 .preview-image {
-    width: 700px;
-    height: auto;
+    width: auto;
+    height: 500px;
     padding: 10px;
 }
 
