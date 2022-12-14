@@ -43,7 +43,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
       setPixelated("False");
       setDeepNatural("False");
 
-      selectTypeMode("blur");
+      selectTypeMode("blurred");
     } else if (e === "pixelated") {
       setBlur("False");
       setPixelated("True");

@@ -293,7 +293,7 @@ const Register = () => {
                   )}
                 </div>
                 <div className="text-center">
-                  {submitButton && password === confirmPassword ? (
+                  {submitButton && password !== confirmPassword ? (
                     <button
                       type="submit"
                       className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
@@ -301,7 +301,10 @@ const Register = () => {
                       Submit
                     </button>
                   ) : (
-                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit">
+                    <button
+                      disabled={true}
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                    >
                       Submit
                     </button>
                   )}
