@@ -36,10 +36,9 @@ const Login = () => {
         validate: validator.errors,
       });
 
-      setSubmitButton(false);
       isValid = false;
     }
-    setSubmitButton(true);
+    setSubmitButton(isValid);
     return isValid;
   };
 
@@ -188,15 +187,19 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  {submitButton ? (
+                  {!submitButton ? (
                     <button
+                      disabled={true}
                       type="submit"
                       className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
                     >
                       Submit
                     </button>
                   ) : (
-                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit">
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                    >
                       Submit
                     </button>
                   )}

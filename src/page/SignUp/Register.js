@@ -231,8 +231,8 @@ const Register = () => {
                       ></i>{" "}
                     </button>
 
-                    <div
-                      className={`invalid-feedback text-start ${
+                    <label
+                      className={`red-label ${
                         validate.validate && validate.validate.password
                           ? "d-block"
                           : "d-none"
@@ -241,7 +241,7 @@ const Register = () => {
                       {validate.validate && validate.validate.password
                         ? validate.validate.password[0]
                         : ""}
-                    </div>
+                    </label>
                   </div>
 
                   <div className="password mb-3 mt-3">
@@ -271,19 +271,19 @@ const Register = () => {
                           }
                         ></i>{" "}
                       </button>
-
-                      <div
-                        className={`invalid-feedback text-start ${
-                          validate.validate && validate.validate.password
-                            ? "d-block"
-                            : "d-none"
-                        }`}
-                      >
-                        {validate.validate && validate.validate.password
-                          ? validate.validate.password[0]
-                          : ""}
-                      </div>
                     </div>
+
+                    <label
+                      className={`red-label  ${
+                        validate.validate && validate.validate.password
+                          ? "d-block"
+                          : "d-none"
+                      }`}
+                    >
+                      {validate.validate && validate.validate.password
+                        ? validate.validate.password[0]
+                        : ""}
+                    </label>
                   </div>
                   {password !== confirmPassword ? (
                     <label className="red-label">Passwords don´t match.</label>
@@ -292,9 +292,10 @@ const Register = () => {
                   )}
                 </div>
                 <div className="text-center">
-                  {!submitButton ||
-                  password !== confirmPassword ||
-                  !password.match(/[A-Z]/) ? (
+                  {password !== confirmPassword ||
+                  !password.match(/[A-Z]/) ||
+                  !password.match(/[0-9]/) ||
+                  !password.match(/[a-z]/) ? (
                     <button
                       disabled={true}
                       type="submit"
