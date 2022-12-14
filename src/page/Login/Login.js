@@ -61,6 +61,7 @@ const Login = () => {
         .post("/user/verify-login", JSON.stringify(userData))
         .then((res) => {
           localStorage.setItem("user", res.data.token);
+          alert("Wait");
           window.location.href = "/home";
         });
     } catch (err) {
