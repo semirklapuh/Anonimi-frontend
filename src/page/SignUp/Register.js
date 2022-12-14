@@ -54,24 +54,19 @@ const Register = () => {
     return isValid;
   };
 
-  const register = (e) => {
+  const submitUser = async (e) => {
     e.preventDefault();
-
     const validate = validateRegister();
 
     if (validate) {
       setValidate({});
-      setFirstName("");
+      /* setFirstName("");
       setLastName("");
       setEmail("");
       setPassword("");
-      setConfirmPassword("");
-      alert("Successfully Register User");
+      setConfirmPassword(""); */
+      alert("Successfully Register User, please login");
     }
-  };
-
-  const submitUser = async (e) => {
-    e.preventDefault();
 
     const userData = {
       firstName: firstName,
