@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
 import apiClient from "../../http/http-common";
+import logo from "../../assets/logo.png";
 
 import "./style.css";
 
@@ -103,6 +104,14 @@ const Register = () => {
       <div className="col-12   auth-main-col text-center">
         <div className="d-flex flex-column align-content-end">
           <div className="auth-body mx-auto">
+            <div>
+              <div className="form-header-div">
+                <img src={logo} alt="logo" />
+              </div>
+              <div className="form-header-div">
+                <h5>ANONIMI</h5>
+              </div>
+            </div>
             <p>Create your Account</p>
             <div className="auth-form-container text-start">
               <form
