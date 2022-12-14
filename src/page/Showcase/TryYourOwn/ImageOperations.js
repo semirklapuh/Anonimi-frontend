@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Dropdown } from "react-bootstrap";
+import { Button, Dropdown, DropdownButton } from "react-bootstrap";
 import upload from "../../../assets/upload.png";
 import apiClient from "../../../http/http-common";
 import LoaderSpinner from "../Loader/LoaderSpinner";
@@ -25,6 +25,8 @@ function Upload({ onDrop, maxFiles = 1 }) {
   const [dataURL, setDataURL] = useState("");
   const [loading, setLoading] = useState(true);
   const [previewImage, setPreviewImage] = useState(false);
+  const [file, setFile] = useState();
+  const [fileUploaded, setFileUploaded] = useState(false);
 
   const handleSelectObject = (e) => {
     if (e === "faces") {
@@ -113,10 +115,13 @@ function Upload({ onDrop, maxFiles = 1 }) {
   }
 
   const handleFileInputChange = (e) => {
+    setFileUploaded(true);
     setLoading(true);
     const files = e.target.files;
     const file = files[0];
     getBase64(file);
+
+    setFile(URL.createObjectURL(e.target.files[0]));
   };
 
   const onLoad = (fileString) => {
@@ -138,43 +143,39 @@ function Upload({ onDrop, maxFiles = 1 }) {
     <>
       {previewImage ? (
         <div className="preview-container">
-          {loading ? (
-            <LoaderSpinner />
-          ) : (
-            <div className="preview">
-              <div className="preview-box">
-                <div className="image-box">
-                  <img
-                    src={`data:image/jpeg;base64,${imageUrl}`}
-                    alt="dd"
-                    className="preview-image"
-                  />
-                  <p className="image-text">BEFORE</p>
-                </div>
-                <br></br>
-                <div>
-                  <img
-                    src={`data:image/jpeg;base64,${dataURL}`}
-                    alt="dd"
-                    className="preview-image"
-                  />
-                  <p className="image-text">AFTER</p>
-                </div>
+          <div className="preview">
+            <div className="preview-box">
+              <div className="image-box">
+                <img
+                  src={`data:image/jpeg;base64,${imageUrl}`}
+                  alt="dd"
+                  className="preview-image"
+                />
+                <p className="image-text">BEFORE</p>
               </div>
-              <Base64Downloader
-                base64={`data:image/jpeg;base64,${dataURL}`}
-                downloadName="anonymized"
-                Tag="a"
-                extraAttributes={{ href: "#" }}
-                className="btn btn-primary"
-                style={{ color: "orange" }}
-                onDownloadSuccess={() => console.log("File download initiated")}
-                onDownloadError={() => console.warn("Download failed to start")}
-              >
-                Click to download
-              </Base64Downloader>
+              <br></br>
+              <div>
+                <img
+                  src={`data:image/jpeg;base64,${dataURL}`}
+                  alt="dd"
+                  className="preview-image"
+                />
+                <p className="image-text">AFTER</p>
+              </div>
             </div>
-          )}
+            <Base64Downloader
+              base64={`data:image/jpeg;base64,${dataURL}`}
+              downloadName="anonymized"
+              Tag="a"
+              extraAttributes={{ href: "#" }}
+              className="btn btn-primary"
+              style={{ color: "orange" }}
+              onDownloadSuccess={() => console.log("File download initiated")}
+              onDownloadError={() => console.warn("Download failed to start")}
+            >
+              Click to download
+            </Base64Downloader>
+          </div>
         </div>
       ) : (
         <div>
@@ -198,23 +199,36 @@ function Upload({ onDrop, maxFiles = 1 }) {
             }}
             className={over ? "upload-container over" : "upload-container"}
           >
-            <div>
-              <img src={upload} alt="upload" className="upload-icon" />
-            </div>
-            <h2 className="title">Upload files here!</h2>
-            <p>Click to browse or drag and drop</p>
-            <p className="text-type-image">
-              Supported formats: jpeg, jpg, png, avi, mkv... 20MB, 5 images/1
-              video per session{" "}
-            </p>
-            <input
-              style={{ display: "none" }}
-              type="file"
-              accept="image/*"
-              ref={$input}
-              onChange={handleFileInputChange}
-            />
+            {fileUploaded ? (
+              <div>
+                {files && (
+                  <div>
+                    <img src={file} alt="preview" width="400" height="auto" />
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>
+                <div>
+                  <img src={upload} alt="upload" className="upload-icon" />
+                </div>
+                <h2 className="title">Upload files here!</h2>
+                <p>Click to browse or drag and drop</p>
+                <p className="text-type-image">
+                  Supported formats: jpeg, jpg, png, avi, mkv... 20MB, 5
+                  images/1 video per session{" "}
+                </p>
+                <input
+                  style={{ display: "none" }}
+                  type="file"
+                  accept="image/*"
+                  ref={$input}
+                  onChange={handleFileInputChange}
+                />
+              </div>
+            )}
           </div>
+
           <div>
             <div className="dropdowns">
               <Dropdown
@@ -243,8 +257,14 @@ function Upload({ onDrop, maxFiles = 1 }) {
                   Mode
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item eventKey="blur">Blur</Dropdown.Item>
+                <Dropdown.Menu title="Mode">
+                  <Dropdown.Item eventKey="blur" as="button">
+                    <div
+                      onClick={(e) => this.changeValue(e.target.textContent)}
+                    >
+                      Blur
+                    </div>
+                  </Dropdown.Item>
                   <Dropdown.Item eventKey="pixelated">Pixelated</Dropdown.Item>
                   <Dropdown.Item eventKey="deepNatural">
                     Deep natural
@@ -258,6 +278,13 @@ function Upload({ onDrop, maxFiles = 1 }) {
           </div>
         </div>
       )}
+      {/* <div>
+        {files && (
+          <div>
+            <img src={file} alt="preview" width="400" height="auto" />
+          </div>
+        )}
+      </div> */}
     </>
   );
 }

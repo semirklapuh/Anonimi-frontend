@@ -36,11 +36,9 @@ const TabsBox = () => {
       <div className="outlet">
         <TabContent id="tab1" activeTab={activeTab}>
           <FirstTab />
-          <ButtonsGroup />
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
           <SecondTab />
-          <ButtonsGroup />
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
           <ThirdTab />

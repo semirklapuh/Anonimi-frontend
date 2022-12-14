@@ -16,9 +16,6 @@ const ButtonsGroup = () => {
           Deep natural
         </Button>
       </ButtonGroup>
-      <div className="row">
-        <FormControlLabel control={<Switch />} label="Anonymize" />
-      </div>
     </div>
   );
 };

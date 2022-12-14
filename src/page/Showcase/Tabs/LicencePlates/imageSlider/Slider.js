@@ -1,11 +1,17 @@
-import { Button } from "@mui/material";
+import { Button, FormControlLabel, Switch } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import React from "react";
 import "./style.css";
+import ButtonsGroup from "../../../ButtonsGroup/ButtonsGroup";
 
 const Slider = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [switchChecked, setSwitchChecked] = React.useState(false);
+
+  const handleChangeChecked = (switchChecked) => {
+    setSwitchChecked(switchChecked);
+  };
 
   const checkNext = () => {
     const labels = document.querySelectorAll("#slider label");
@@ -98,6 +104,14 @@ const Slider = () => {
             </Button>
           </div>
         </div>
+      </div>
+      <ButtonsGroup />
+      <div className="row">
+        <FormControlLabel
+          onChange={(e) => handleChangeChecked(e.target.variant)}
+          control={<Switch checked={switchChecked} defaultChecked />}
+          label="Anonymize"
+        />
       </div>
     </div>
   );

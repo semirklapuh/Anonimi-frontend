@@ -3,6 +3,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import React from "react";
 import "./style.css";
+import ButtonsGroup from "../../../ButtonsGroup/ButtonsGroup";
 
 const Slider = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -99,6 +100,7 @@ const Slider = () => {
           </div>
         </div>
       </div>
+      <ButtonsGroup />
     </div>
   );
 };

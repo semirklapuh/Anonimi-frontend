@@ -38,11 +38,11 @@ export default function NavigationBar() {
               <Nav.Link href="#link" className="centered-nav-item">Pricing</Nav.Link>
 
               <NavDropdown title="About" id="basic-nav-dropdown" className="centered-nav-item">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item  href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2" >
                   Another action
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
+                <NavDropdown.Item href="#action/3.3" >
                   Something
                 </NavDropdown.Item>
               </NavDropdown>
@@ -60,7 +60,7 @@ export default function NavigationBar() {
                   <button className="btn-register">Try for free</button>
                 </Nav.Link>
 
-                <NavDropdown title="LN" className="btn-ln">EN</NavDropdown>
+                <NavDropdown title="LN" className="btn-ln" disabled={true}>EN</NavDropdown>
               </ButtonGroup>
             </Navbar.Text>
           </Navbar.Collapse>

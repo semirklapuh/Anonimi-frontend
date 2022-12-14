@@ -7,7 +7,7 @@ const ThirdTab = () => {
     <div className="ThirdTab">
       <Upload
         onDrop={(files) => {
-          console.log("pokusaj");
+          console.log(files);
         }}
       />
     </div>
