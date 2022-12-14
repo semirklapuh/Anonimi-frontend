@@ -37,7 +37,7 @@ const Register = () => {
       password: {
         value: password,
         isRequired: true,
-        minLength: 6,
+        minLength: 8,
         isPassword: true,
       },
       confirmPassword: {
@@ -301,10 +301,7 @@ const Register = () => {
                       Submit
                     </button>
                   ) : (
-                    <button
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
-                      disabled={true}
-                    >
+                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit">
                       Submit
                     </button>
                   )}

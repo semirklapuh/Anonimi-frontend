@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
 import apiClient from "../../http/http-common";
+import logo from "../../assets/logo.png";
 import "./style.css";
 
 const Login = () => {
@@ -10,6 +11,8 @@ const Login = () => {
   const [remember, setRemember] = useState(false);
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [submitButton, setSubmitButton] = useState(false);
+
   const form = useRef();
 
   const validateLogin = () => {
@@ -24,7 +27,7 @@ const Login = () => {
       password: {
         value: password,
         isRequired: true,
-        minLength: 6,
+        minLength: 8,
       },
     });
 
@@ -33,14 +36,15 @@ const Login = () => {
         validate: validator.errors,
       });
 
+      setSubmitButton(false);
       isValid = false;
     }
+    setSubmitButton(true);
     return isValid;
   };
 
-  const authenticate = (e) => {
+  const submitUser = async (e) => {
     e.preventDefault();
-
     const validate = validateLogin();
 
     if (validate) {
@@ -49,10 +53,6 @@ const Login = () => {
       setPassword("");
       alert("Successfully Login");
     }
-  };
-
-  const submitUser = async (e) => {
-    e.preventDefault();
 
     const userData = {
       username: email,
@@ -79,6 +79,14 @@ const Login = () => {
       <div className="col-12  auth-main-col text-center">
         <div className="d-flex flex-column align-content-end">
           <div className="auth-body mx-auto">
+            <div>
+              <div className="form-header-div">
+                <img src={logo} alt="logo" />
+              </div>
+              <div className="form-header-div">
+                <h5>ANONIMI</h5>
+              </div>
+            </div>
             <p>Login to your account</p>
             <div className="auth-form-container text-start">
               <form
@@ -180,12 +188,18 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 theme-btn mx-auto"
-                  >
-                    Log In
-                  </button>
+                  {submitButton ? (
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                    >
+                      Submit
+                    </button>
+                  ) : (
+                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit">
+                      Submit
+                    </button>
+                  )}
                 </div>
               </form>
 
