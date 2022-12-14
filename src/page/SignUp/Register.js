@@ -52,9 +52,8 @@ const Register = () => {
       });
 
       isValid = false;
-      setSubmitButton(false);
     }
-    setSubmitButton(true);
+    setSubmitButton(isValid);
     return isValid;
   };
 
@@ -293,18 +292,18 @@ const Register = () => {
                   )}
                 </div>
                 <div className="text-center">
-                  {submitButton && password !== confirmPassword ? (
+                  {!submitButton ||
+                  password !== confirmPassword ||
+                  !password.match(/[A-Z]/) ? (
                     <button
+                      disabled={true}
                       type="submit"
                       className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
                     >
                       Submit
                     </button>
                   ) : (
-                    <button
-                      disabled={true}
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
-                    >
+                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit">
                       Submit
                     </button>
                   )}
