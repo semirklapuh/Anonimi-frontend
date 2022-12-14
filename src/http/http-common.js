@@ -6,6 +6,7 @@ const URL =
 let token = localStorage.getItem("user") || "";
 
 console.log(token);
+
 export default axios.create({
   baseURL: URL,
   cache: "no-cache",
@@ -13,7 +14,7 @@ export default axios.create({
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
-    //Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${token}`,
   },
   mode: "cors",
 });

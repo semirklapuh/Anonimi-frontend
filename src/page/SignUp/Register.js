@@ -68,9 +68,6 @@ const Register = () => {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-      alert(
-        "Successfully Register User, Please check your email for confirmation."
-      );
     }
 
     const userData = {
@@ -81,13 +78,27 @@ const Register = () => {
       confirmationPassword: confirmPassword,
       signinTypeId: 3,
     };
-    console.log(userData);
+    //console.log(userData);
 
-    await apiClient
-      .post("/user/signin", JSON.stringify(userData))
-      .then((res) => {
-        console.log(res.data);
-      });
+    try {
+      await apiClient
+        .post("/user/signin", JSON.stringify(userData))
+        .then((res) => {
+          console.log(res.data);
+          alert(
+            "Please check your email for confirmation and login to ANONIMI."
+          );
+          window.location.href = "/login";
+        });
+    } catch (err) {
+      if (!err?.response) {
+        alert("No Server Response");
+      } else if (err.response?.status === 400) {
+        alert("Username Taken");
+      } else {
+        alert("Registration Failed");
+      }
+    }
   };
 
   const togglePassword = (e) => {

@@ -27,7 +27,6 @@ const Login = () => {
       password: {
         value: password,
         isRequired: true,
-        minLength: 8,
       },
     });
 
@@ -38,19 +37,18 @@ const Login = () => {
 
       isValid = false;
     }
-    setSubmitButton(isValid);
+
     return isValid;
   };
 
   const submitUser = async (e) => {
     e.preventDefault();
     const validate = validateLogin();
-
+    setSubmitButton(validate);
     if (validate) {
       setValidate({});
       setEmail("");
       setPassword("");
-      alert("Successfully Login");
     }
 
     const userData = {
@@ -58,11 +56,24 @@ const Login = () => {
       password: password,
     };
 
-    await apiClient
-      .post("/user/verify-login", JSON.stringify(userData))
-      .then((res) => {
-        localStorage.setItem("user", res.data.token);
-      });
+    try {
+      await apiClient
+        .post("/user/verify-login", JSON.stringify(userData))
+        .then((res) => {
+          localStorage.setItem("user", res.data.token);
+          window.location.href = "/home";
+        });
+    } catch (err) {
+      if (!err?.response) {
+        alert("No Server Response");
+      } else if (err.response?.status === 400) {
+        alert("Missing Username or Password");
+      } else if (err.response?.status === 401) {
+        alert("Unauthorized");
+      } else {
+        alert("Login Failed");
+      }
+    }
   };
 
   const togglePassword = (e) => {
@@ -150,18 +161,6 @@ const Login = () => {
                         }
                       ></i>{" "}
                     </button>
-
-                    <div
-                      className={`invalid-feedback text-start ${
-                        validate.validate && validate.validate.password
-                          ? "d-block"
-                          : "d-none"
-                      }`}
-                    >
-                      {validate.validate && validate.validate.password
-                        ? validate.validate.password[0]
-                        : ""}
-                    </div>
                   </div>
 
                   <div className="extra mt-3 row justify-content-between">
@@ -189,7 +188,6 @@ const Login = () => {
                 <div className="text-center">
                   {!submitButton ? (
                     <button
-                      disabled={true}
                       type="submit"
                       className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
                     >
