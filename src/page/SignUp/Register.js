@@ -13,6 +13,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [submitButton, setSubmitButton] = useState(false);
   const form = useRef();
 
   const validateRegister = () => {
@@ -36,11 +37,11 @@ const Register = () => {
         value: password,
         isRequired: true,
         minLength: 6,
+        isPassword: true,
       },
       confirmPassword: {
         value: confirmPassword,
         isRequired: true,
-        minLength: 6,
       },
     });
 
@@ -50,7 +51,9 @@ const Register = () => {
       });
 
       isValid = false;
+      setSubmitButton(false);
     }
+    setSubmitButton(true);
     return isValid;
   };
 
@@ -60,12 +63,14 @@ const Register = () => {
 
     if (validate) {
       setValidate({});
-      /* setFirstName("");
+      setFirstName("");
       setLastName("");
       setEmail("");
       setPassword("");
-      setConfirmPassword(""); */
-      alert("Successfully Register User, please login");
+      setConfirmPassword("");
+      alert(
+        "Successfully Register User, Please check your email for confirmation."
+      );
     }
 
     const userData = {
@@ -272,14 +277,28 @@ const Register = () => {
                       </div>
                     </div>
                   </div>
+                  {password !== confirmPassword ? (
+                    <label className="red-label">Passwords don´t match.</label>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="text-center">
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 theme-btn mx-auto"
-                  >
-                    Sign Up
-                  </button>
+                  {submitButton && password === confirmPassword ? (
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                    >
+                      Submit
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                      disabled={true}
+                    >
+                      Submit
+                    </button>
+                  )}
                 </div>
               </form>
 
