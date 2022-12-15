@@ -115,3 +115,32 @@ p {
     padding: 10px;
     font-weight: bold;
 }
+
+.dropdown-menu {
+    max-width: 100px;
+}
+
+.dropdown-item {
+    background-color: white;
+
+}
+
+.dropdown-item>div {
+    color: black;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(95, 85, 85);
+}
+
+.dropdown-item>div :hover {
+    color: rgb(32, 28, 28);
+}
+
+#dropdown-item-button {
+    width: 160px;
+}
+
+.btn {
+    width: 160px;
+}

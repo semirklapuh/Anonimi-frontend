@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Dropdown, DropdownButton } from "react-bootstrap";
+import { Button, ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 import upload from "../../../assets/upload.png";
 import apiClient from "../../../http/http-common";
 import LoaderSpinner from "../Loader/LoaderSpinner";
@@ -27,6 +27,16 @@ function Upload({ onDrop, maxFiles = 1 }) {
   const [previewImage, setPreviewImage] = useState(false);
   const [file, setFile] = useState();
   const [fileUploaded, setFileUploaded] = useState(false);
+  const [modeDropDownValue, setModeDropDownValue] = useState("Mode");
+  const [objectDropDownValue, setObjectDropDownValue] = useState("Object");
+
+  const changeModeValue = (text) => {
+    setModeDropDownValue(text);
+  };
+
+  const changeObjectValue = (text) => {
+    setObjectDropDownValue(text);
+  };
 
   const handleSelectObject = (e) => {
     if (e === "faces") {
@@ -231,46 +241,50 @@ function Upload({ onDrop, maxFiles = 1 }) {
 
           <div>
             <div className="dropdowns">
-              <Dropdown
+              <DropdownButton
+                id="dropdown-item-button"
+                title={objectDropDownValue}
+                // className="format"
                 className="d-inline mx-2"
                 autoClose="inside"
                 onSelect={handleSelectObject}
               >
-                <Dropdown.Toggle id="dropdown-autoclose-inside">
-                  Object
-                </Dropdown.Toggle>
+                <Dropdown.Item eventKey="faces" as="button">
+                  <div onClick={(e) => changeObjectValue(e.target.textContent)}>
+                    Faces
+                  </div>
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="plates" as="button">
+                  <div onClick={(e) => changeObjectValue(e.target.textContent)}>
+                    Plates
+                  </div>
+                </Dropdown.Item>
+              </DropdownButton>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item eventKey="faces">Faces</Dropdown.Item>
-                  <Dropdown.Item eventKey="plates">
-                    Licence plates
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-
-              <Dropdown
+              <DropdownButton
+                id="dropdown-item-button"
+                title={modeDropDownValue}
+                // className="format"
                 className="d-inline mx-2"
                 autoClose="inside"
                 onSelect={handleSelectTypeMode}
               >
-                <Dropdown.Toggle id="dropdown-autoclose-inside">
-                  Mode
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu title="Mode">
-                  <Dropdown.Item eventKey="blur" as="button">
-                    <div
-                      onClick={(e) => this.changeValue(e.target.textContent)}
-                    >
-                      Blur
-                    </div>
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="pixelated">Pixelated</Dropdown.Item>
-                  <Dropdown.Item eventKey="deepNatural">
+                <Dropdown.Item eventKey="blur" as="button">
+                  <div onClick={(e) => changeModeValue(e.target.textContent)}>
+                    Blur
+                  </div>
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="pixelated" as="button">
+                  <div onClick={(e) => changeModeValue(e.target.textContent)}>
+                    Pixelated
+                  </div>
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="deepNatural" as="button">
+                  <div onClick={(e) => changeModeValue(e.target.textContent)}>
                     Deep natural
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  </div>
+                </Dropdown.Item>
+              </DropdownButton>
               <div className="btn-div">
                 <Button onClick={submitAnonymize}>Anonymize</Button>
               </div>
