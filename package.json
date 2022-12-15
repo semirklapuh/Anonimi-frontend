@@ -36,6 +36,7 @@
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
     "react-switch": "^7.0.0",
+    "react-use-styles": "^1.0.6",
     "sass": "^1.56.1",
     "styled-components": "^5.3.6",
     "use-history": "^1.4.1",

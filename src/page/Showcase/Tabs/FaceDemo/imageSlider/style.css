@@ -83,3 +83,7 @@
     border: 1px transparent;
     margin-bottom: 5px;
 }
+
+#button1:active {
+    background-color: aliceblue;
+}

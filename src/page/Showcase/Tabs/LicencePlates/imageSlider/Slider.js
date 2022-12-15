@@ -1,16 +1,28 @@
-import { Button, FormControlLabel, Switch } from "@mui/material";
+import { Button, ButtonGroup } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import React from "react";
 import "./style.css";
-import ButtonsGroup from "../../../ButtonsGroup/ButtonsGroup";
+import Switch from "react-switch";
+
+import platesOrg1 from "../images/platesOrg1.jpg";
+import platesBlur1 from "../images/platesBlur1.jpeg";
+import platesOrg2 from "../images/platesOrg2.jpeg";
+import platesBlur2 from "../images/platesBlur2.jpeg";
+import platesOrg3 from "../images/platesOrg3.jpg";
+import platesBlur3 from "../images/platesBlur3.jpeg";
 
 const Slider = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [switchChecked, setSwitchChecked] = React.useState(false);
 
+  const [blur, setBlur] = React.useState(false);
+
   const handleChangeChecked = (switchChecked) => {
     setSwitchChecked(switchChecked);
+  };
+  const handleBlur = () => {
+    setBlur(true);
   };
 
   const checkNext = () => {
@@ -64,31 +76,61 @@ const Slider = () => {
               onClick={() => check(2)}
             />
             <label htmlFor="s1" id="slide1">
-              <img
-                className="fea"
-                src="https://picsum.photos/700/400"
-                height="100%"
-                width="100%"
-                alt="f"
-              />
+              {switchChecked && blur ? (
+                <img
+                  className="fea"
+                  src={platesBlur1}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              ) : (
+                <img
+                  className="fea"
+                  src={platesOrg1}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              )}
             </label>
             <label htmlFor="s2" id="slide2">
-              <img
-                className="fea"
-                src="https://picsum.photos/700/500"
-                height="100%"
-                width="100%"
-                alt="f"
-              />
+              {switchChecked && blur ? (
+                <img
+                  className="fea"
+                  src={platesBlur2}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              ) : (
+                <img
+                  className="fea"
+                  src={platesOrg2}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              )}
             </label>
             <label htmlFor="s3" id="slide3">
-              <img
-                className="fea"
-                src="https://picsum.photos/500/700"
-                height="100%"
-                width="100%"
-                alt="f"
-              />
+              {switchChecked && blur ? (
+                <img
+                  className="fea"
+                  src={platesBlur3}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              ) : (
+                <img
+                  className="fea"
+                  src={platesOrg3}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              )}
             </label>
           </section>
         </div>
@@ -105,13 +147,24 @@ const Slider = () => {
           </div>
         </div>
       </div>
-      <ButtonsGroup />
-      <div className="row">
-        <FormControlLabel
-          onChange={(e) => handleChangeChecked(e.target.variant)}
-          control={<Switch checked={switchChecked} defaultChecked />}
-          label="Anonymize"
-        />
+      <div className="row-btn">
+        <ButtonGroup aria-label="primary button group">
+          <Button className="type-btn" onClick={handleBlur}>
+            Blur
+          </Button>
+          <Button className="type-btn" disabled={true}>
+            Pixelated
+          </Button>
+
+          <Button className="type-btn" disabled={true}>
+            Deep natural
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div className="switch-box">
+        <label className="switch-label">Original</label>
+        <Switch onChange={handleChangeChecked} checked={switchChecked} />
+        <label className="switch-label">Anonymize</label>
       </div>
     </div>
   );

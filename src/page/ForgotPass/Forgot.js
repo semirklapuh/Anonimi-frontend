@@ -95,12 +95,22 @@ const Forgot = () => {
                 </div>
 
                 <div className="text-center">
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 theme-btn mx-auto"
-                  >
-                    Submit
-                  </button>
+                  {email === "" || email === null ? (
+                    <button
+                      disabled={true}
+                      type="submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                    >
+                      Submit
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                    >
+                      Submit
+                    </button>
+                  )}
                 </div>
               </form>
 

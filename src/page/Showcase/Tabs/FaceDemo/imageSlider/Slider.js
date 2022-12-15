@@ -19,6 +19,14 @@ import faceOrg3 from "../images/faceOrg3.jpg";
 import faceBlur3 from "../images/faceBlur3.jpg";
 import facePix3 from "../images/facePix3.jpg";
 import faceDN3 from "../images/faceDN3.jpg";
+import { makeStyles } from "@material-ui/styles";
+
+const useStyles = makeStyles(() => ({
+  activeButton: {
+    background: "white",
+    color: "darkblue",
+  },
+}));
 
 const Slider = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -27,24 +35,29 @@ const Slider = () => {
   const [blur, setBlur] = useState(false);
   const [pixelated, setPixelated] = useState(false);
   const [deepNatural, setDeepNatural] = useState(false);
-  const [image1, setImage1] = useState(false);
-  const [image2, setImage2] = useState(false);
-  const [image3, setImage3] = useState(false);
 
-  const handleBlur = () => {
+  const [active, setActive] = useState("first");
+
+  const handleBlur = (e) => {
     setBlur(true);
     setDeepNatural(false);
     setPixelated(false);
+
+    setActive("first");
   };
-  const handlePixelated = () => {
+  const handlePixelated = (e) => {
     setBlur(false);
     setDeepNatural(false);
     setPixelated(true);
+
+    setActive("second");
   };
-  const handleDeepNatural = () => {
+  const handleDeepNatural = (e) => {
     setBlur(false);
     setDeepNatural(true);
     setPixelated(false);
+
+    setActive("third");
   };
 
   const handleChangeChecked = (switchChecked) => {
@@ -59,6 +72,8 @@ const Slider = () => {
   };
 
   const check = (index) => setSelectedIndex(index);
+
+  const classes = useStyles();
 
   return (
     <div>
@@ -247,14 +262,29 @@ const Slider = () => {
       </div>
       <div className="row-btn">
         <ButtonGroup aria-label="primary button group">
-          <Button size="small" className="type-btn" onClick={handleBlur}>
+          <Button
+            onClick={handleBlur}
+            id="first"
+            name="first"
+            className={active === "first" ? `${classes.activeButton}` : ""}
+          >
             Blur
           </Button>
-          <Button size="small" className="type-btn" onClick={handlePixelated}>
+          <Button
+            name="second"
+            className={active === "second" ? `${classes.activeButton}` : ""}
+            onClick={handlePixelated}
+            id="second"
+          >
             Pixelated
           </Button>
 
-          <Button size="small" className="type-btn" onClick={handleDeepNatural}>
+          <Button
+            className={active === "third" ? `${classes.activeButton}` : ""}
+            name="third"
+            onClick={handleDeepNatural}
+            id="third"
+          >
             Deep natural
           </Button>
         </ButtonGroup>

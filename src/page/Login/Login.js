@@ -187,8 +187,12 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  {!submitButton ? (
+                  {email === "" ||
+                  email === null ||
+                  password === "" ||
+                  password === null ? (
                     <button
+                      disabled={true}
                       type="submit"
                       className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
                     >

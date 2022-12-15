@@ -16,10 +16,9 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [submitButton, setSubmitButton] = useState(false);
   const form = useRef();
+  let isValid = true;
 
   const validateRegister = () => {
-    let isValid = true;
-
     let validator = Form.validator({
       firstName: {
         value: firstName,
@@ -37,7 +36,7 @@ const Register = () => {
       password: {
         value: password,
         isRequired: true,
-        minLength: 8,
+        minLength: 6,
         isPassword: true,
       },
       confirmPassword: {
@@ -53,7 +52,7 @@ const Register = () => {
 
       isValid = false;
     }
-    setSubmitButton(isValid);
+
     return isValid;
   };
 
@@ -63,11 +62,6 @@ const Register = () => {
 
     if (validate) {
       setValidate({});
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
     }
 
     const userData = {
@@ -94,8 +88,6 @@ const Register = () => {
       if (!err?.response) {
         alert("No Server Response");
       } else if (err.response?.status === 400) {
-        alert("Username Taken");
-      } else {
         alert("Registration Failed");
       }
     }
@@ -214,7 +206,7 @@ const Register = () => {
                   </div>
                 </div>
 
-                <div className="password mb-3">
+                <div className="password mb-2">
                   <div className="input-group">
                     <input
                       type={showPassword ? "text" : "password"}
@@ -255,7 +247,7 @@ const Register = () => {
                     </label>
                   </div>
 
-                  <div className="password mb-3 mt-3">
+                  <div className="password">
                     <div className="input-group">
                       <input
                         type={showPassword ? "text" : "password"}
@@ -296,17 +288,36 @@ const Register = () => {
                         : ""}
                     </label>
                   </div>
-                  {password !== confirmPassword ? (
-                    <label className="red-label">Passwords don´t match.</label>
-                  ) : (
-                    ""
-                  )}
                 </div>
+                {password !== confirmPassword ? (
+                  <label className="red-label">Passwords don´t match.</label>
+                ) : (
+                  <>
+                    {!password.match(/[A-Z]/) ||
+                    !password.match(/[0-9]/) ||
+                    !password.match(/[a-z]/) ||
+                    password.length < 7 ? (
+                      <label className="red-label">
+                        The password must have at least 1 uppercase letter,{" "}
+                        <br></br> 1 lowercase letter, 1 number and 6 characters.
+                      </label>
+                    ) : (
+                      ""
+                    )}
+                  </>
+                )}
+
                 <div className="text-center">
                   {password !== confirmPassword ||
                   !password.match(/[A-Z]/) ||
                   !password.match(/[0-9]/) ||
-                  !password.match(/[a-z]/) ? (
+                  !password.match(/[a-z]/) ||
+                  email === "" ||
+                  email === null ||
+                  firstName === "" ||
+                  firstName === null ||
+                  lastName === "" ||
+                  lastName === null ? (
                     <button
                       disabled={true}
                       type="submit"
