@@ -61,3 +61,25 @@
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
     transform: translate3d(50%, 0, -100px);
 }
+
+.switch-box>div>div>div>svg {
+    display: none;
+}
+
+.switch-box {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0;
+}
+
+.switch-box>.switch-label {
+    font-size: 15px;
+    padding: 0 20px;
+}
+
+.row-btn {
+    display: flex;
+    flex-direction: row;
+    border: 1px transparent;
+    margin-bottom: 5px;
+}

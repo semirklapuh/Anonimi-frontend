@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonGroup, Button, Switch, FormControlLabel } from "@mui/material";
+import { ButtonGroup, Button } from "@mui/material";
 import "./style.css";
 
 const ButtonsGroup = () => {

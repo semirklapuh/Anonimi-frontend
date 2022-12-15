@@ -1,12 +1,55 @@
-import { Button } from "@mui/material";
+import { Button, ButtonGroup } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
-import ButtonsGroup from "../../../ButtonsGroup/ButtonsGroup";
+import Switch from "react-switch";
+
+import faceOrg1 from "../images/faceOrg1.jpg";
+import faceBlur1 from "../images/faceBlur1.jpg";
+import facePix1 from "../images/facePix1.jpg";
+import faceDN1 from "../images/faceDN1.jpg";
+
+import faceOrg2 from "../images/faceOrg2.jpg";
+import faceBlur2 from "../images/faceBlur2.jpg";
+import facePix2 from "../images/facePix2.jpg";
+import faceDN2 from "../images/faceDN2.jpg";
+
+import faceOrg3 from "../images/faceOrg3.jpg";
+import faceBlur3 from "../images/faceBlur3.jpg";
+import facePix3 from "../images/facePix3.jpg";
+import faceDN3 from "../images/faceDN3.jpg";
 
 const Slider = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [switchChecked, setSwitchChecked] = React.useState(false);
+
+  const [blur, setBlur] = useState(false);
+  const [pixelated, setPixelated] = useState(false);
+  const [deepNatural, setDeepNatural] = useState(false);
+  const [image1, setImage1] = useState(false);
+  const [image2, setImage2] = useState(false);
+  const [image3, setImage3] = useState(false);
+
+  const handleBlur = () => {
+    setBlur(true);
+    setDeepNatural(false);
+    setPixelated(false);
+  };
+  const handlePixelated = () => {
+    setBlur(false);
+    setDeepNatural(false);
+    setPixelated(true);
+  };
+  const handleDeepNatural = () => {
+    setBlur(false);
+    setDeepNatural(true);
+    setPixelated(false);
+  };
+
+  const handleChangeChecked = (switchChecked) => {
+    setSwitchChecked(switchChecked);
+  };
 
   const checkNext = () => {
     const labels = document.querySelectorAll("#slider label");
@@ -59,31 +102,133 @@ const Slider = () => {
               onClick={() => check(2)}
             />
             <label htmlFor="s1" id="slide1">
-              <img
-                className="fea"
-                src="https://picsum.photos/600/400"
-                height="100%"
-                width="100%"
-                alt="f"
-              />
+              {switchChecked && blur && !pixelated && !deepNatural ? (
+                <img
+                  className="fea"
+                  src={faceBlur1}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              ) : (
+                <>
+                  {switchChecked && !blur && !pixelated && deepNatural ? (
+                    <img
+                      className="fea"
+                      src={faceDN1}
+                      height="100%"
+                      width="100%"
+                      alt="f"
+                    />
+                  ) : (
+                    <>
+                      {switchChecked && !blur && pixelated && !deepNatural ? (
+                        <img
+                          className="fea"
+                          src={facePix1}
+                          height="100%"
+                          width="100%"
+                          alt="f"
+                        />
+                      ) : (
+                        <img
+                          className="fea"
+                          src={faceOrg1}
+                          height="100%"
+                          width="100%"
+                          alt="f"
+                        />
+                      )}
+                    </>
+                  )}
+                </>
+              )}
             </label>
             <label htmlFor="s2" id="slide2">
-              <img
-                className="fea"
-                src="https://picsum.photos/600/500"
-                height="100%"
-                width="100%"
-                alt="f"
-              />
+              {switchChecked && blur && !pixelated && !deepNatural ? (
+                <img
+                  className="fea"
+                  src={faceBlur2}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              ) : (
+                <>
+                  {switchChecked && !blur && !pixelated && deepNatural ? (
+                    <img
+                      className="fea"
+                      src={faceDN2}
+                      height="100%"
+                      width="100%"
+                      alt="f"
+                    />
+                  ) : (
+                    <>
+                      {switchChecked && !blur && pixelated && !deepNatural ? (
+                        <img
+                          className="fea"
+                          src={facePix2}
+                          height="100%"
+                          width="100%"
+                          alt="f"
+                        />
+                      ) : (
+                        <img
+                          className="fea"
+                          src={faceOrg2}
+                          height="100%"
+                          width="100%"
+                          alt="f"
+                        />
+                      )}
+                    </>
+                  )}
+                </>
+              )}
             </label>
             <label htmlFor="s3" id="slide3">
-              <img
-                className="fea"
-                src="https://picsum.photos/400/700"
-                height="100%"
-                width="100%"
-                alt="f"
-              />
+              {switchChecked && blur && !pixelated && !deepNatural ? (
+                <img
+                  className="fea"
+                  src={faceBlur3}
+                  height="100%"
+                  width="100%"
+                  alt="f"
+                />
+              ) : (
+                <>
+                  {switchChecked && !blur && !pixelated && deepNatural ? (
+                    <img
+                      className="fea"
+                      src={faceDN3}
+                      height="100%"
+                      width="100%"
+                      alt="f"
+                    />
+                  ) : (
+                    <>
+                      {switchChecked && !blur && pixelated && !deepNatural ? (
+                        <img
+                          className="fea"
+                          src={facePix3}
+                          height="100%"
+                          width="100%"
+                          alt="f"
+                        />
+                      ) : (
+                        <img
+                          className="fea"
+                          src={faceOrg3}
+                          height="100%"
+                          width="100%"
+                          alt="f"
+                        />
+                      )}
+                    </>
+                  )}
+                </>
+              )}
             </label>
           </section>
         </div>
@@ -100,7 +245,25 @@ const Slider = () => {
           </div>
         </div>
       </div>
-      <ButtonsGroup />
+      <div className="row-btn">
+        <ButtonGroup aria-label="primary button group">
+          <Button size="small" className="type-btn" onClick={handleBlur}>
+            Blur
+          </Button>
+          <Button size="small" className="type-btn" onClick={handlePixelated}>
+            Pixelated
+          </Button>
+
+          <Button size="small" className="type-btn" onClick={handleDeepNatural}>
+            Deep natural
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div className="switch-box">
+        <label className="switch-label">Original</label>
+        <Switch onChange={handleChangeChecked} checked={switchChecked} />
+        <label className="switch-label">Anonymize</label>
+      </div>
     </div>
   );
 };
