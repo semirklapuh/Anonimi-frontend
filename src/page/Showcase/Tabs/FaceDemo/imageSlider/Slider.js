@@ -36,7 +36,7 @@ const Slider = () => {
   const [pixelated, setPixelated] = useState(false);
   const [deepNatural, setDeepNatural] = useState(false);
 
-  const [active, setActive] = useState("first");
+  const [active, setActive] = useState("");
 
   const handleBlur = (e) => {
     setBlur(true);

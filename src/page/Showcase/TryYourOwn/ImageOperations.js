@@ -161,7 +161,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
                   alt="dd"
                   className="preview-image"
                 />
-                <p className="image-text">BEFORE</p>
+                <p className="image-text paragraf">BEFORE</p>
               </div>
               <br></br>
               <div>
@@ -170,7 +170,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
                   alt="dd"
                   className="preview-image"
                 />
-                <p className="image-text">AFTER</p>
+                <p className="image-text paragraf">AFTER</p>
               </div>
             </div>
             <Base64Downloader
@@ -222,9 +222,9 @@ function Upload({ onDrop, maxFiles = 1 }) {
                 <div>
                   <img src={upload} alt="upload" className="upload-icon" />
                 </div>
-                <h2 className="title">Upload files here!</h2>
-                <p>Click to browse or drag and drop</p>
-                <p className="text-type-image">
+                <h2 className="title paragraf">Upload files here!</h2>
+                <p className="paragraf">Click to browse or drag and drop</p>
+                <p className="text-type-image paragraf">
                   Supported formats: jpeg, jpg, png, avi, mkv... 20MB, 5
                   images/1 video per session{" "}
                 </p>

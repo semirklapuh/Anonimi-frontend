@@ -1,4 +1,5 @@
 import React from "react";
+import Features from "./FeaturesPage";
 import Showcase from "./Showcase";
 import Hero from "./WelcomePage";
 
@@ -8,7 +9,9 @@ const Main = () => {
       <div>
         <Hero />
       </div>
-
+      <>
+        <Features />
+      </>
       <div>
         <Showcase />
       </div>

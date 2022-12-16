@@ -1,0 +1,52 @@
+@import "~@fontsource/lato";
+@import "~@fontsource/roboto";
+
+.features-section {
+    background-color: hsl(0, 0%, 100%);
+    min-height: 900px;
+    margin-top: 870px;
+    color: black;
+    text-align: left;
+}
+
+.feature-info-box {
+    width: 452px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+
+.feature-img-box>img {
+    width: 160px;
+    height: 140px;
+}
+
+.feature-description {
+    font-family: "Lato";
+    font-size: 14px;
+    text-align: justify;
+    display: flex;
+    color: black;
+    align-items: flex-start;
+}
+
+.box-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-row {
+    margin-top: 50px;
+}
+
+.feature-box {
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+}
+
+.column {
+    margin-right: 20px;
+}
