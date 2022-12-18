@@ -23,8 +23,8 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(() => ({
   activeButton: {
-    background: "white",
-    color: "darkblue",
+    background: "grey",
+    color: "white",
   },
 }));
 

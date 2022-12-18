@@ -87,3 +87,13 @@
 #button1:active {
     background-color: aliceblue;
 }
+
+#first, #second, #third {
+    min-width: 160px;
+    color: rgb(216, 204, 189);
+}
+
+#first:hover, #second:hover, #third:hover {
+    background-color: grey;
+    color: white;
+}
