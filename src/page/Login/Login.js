@@ -13,6 +13,10 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [submitButton, setSubmitButton] = useState(false);
 
+  //dodao status za verified response, display error da prikaze error message ako nije loginan
+  const [status, setStatus] = useState(false);
+  const [displayError, setDisplayError] = useState(false);
+
   const form = useRef();
 
   const validateLogin = () => {
@@ -56,14 +60,22 @@ const Login = () => {
       password: password,
     };
 
+    //Ispod izmjene
     try {
       await apiClient
         .post("/user/verify-login", JSON.stringify(userData))
         .then((res) => {
+          //kupim verified response iz objekta
+          setStatus(res.data.verified);
           localStorage.setItem("user", res.data.token);
-          alert("Wait");
-          window.location.href = "/home";
         });
+
+      //na osnovu statusa mjenjam error display
+      if (status) {
+        setDisplayError(false);
+      } else {
+        setDisplayError(true);
+      }
     } catch (err) {
       if (!err?.response) {
         alert("No Server Response");
@@ -76,6 +88,14 @@ const Login = () => {
       }
     }
   };
+
+  //ako je uspjesno logovan redirecta na home
+  useEffect(() => {
+    if (status) {
+      setDisplayError(false);
+      window.location.href = "/home";
+    }
+  }, [status]);
 
   const togglePassword = (e) => {
     if (showPassword) {
@@ -162,6 +182,16 @@ const Login = () => {
                         }
                       ></i>{" "}
                     </button>
+                  </div>
+                  <div>
+                    <p
+                      style={{
+                        display: displayError ? "block" : "none",
+                        color: "red",
+                      }}
+                    >
+                      Wrong email or password
+                    </p>
                   </div>
 
                   <div className="extra mt-3 row justify-content-between">

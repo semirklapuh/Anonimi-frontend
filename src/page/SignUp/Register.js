@@ -15,6 +15,7 @@ const Register = () => {
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [submitButton, setSubmitButton] = useState(false);
+  const [errorPass, setErrorPass] = useState(false);
   const form = useRef();
   let isValid = true;
 
@@ -289,26 +290,34 @@ const Register = () => {
                     </label>
                   </div>
                 </div>
-                {password !== confirmPassword ? (
-                  <label className="red-label">Passwords don´t match.</label>
+                {password === null || password === "" ? (
+                  ""
                 ) : (
                   <>
-                    {!password.match(/[A-Z]/) ||
-                    !password.match(/[0-9]/) ||
-                    !password.match(/[a-z]/) ||
-                    password.length < 7 ? (
-                      <label className="red-label">
-                        The password must have at least 1 uppercase letter,{" "}
-                        <br></br> 1 lowercase letter, 1 number and 6 characters.
-                      </label>
+                    {password === confirmPassword ? (
+                      <>
+                        {(!password.match(/[A-Z]/) ||
+                          !password.match(/[0-9]/) ||
+                          !password.match(/[a-z]/) ||
+                          password.length < 6) && (
+                          <label className="red-label">
+                            The password must have at least 1 uppercase letter,{" "}
+                            <br></br> 1 lowercase letter, 1 number and 6
+                            characters.
+                          </label>
+                        )}
+                      </>
                     ) : (
-                      ""
+                      <label className="red-label">
+                        Passwords don´t match.
+                      </label>
                     )}
                   </>
                 )}
 
                 <div className="text-center">
                   {password !== confirmPassword ||
+                  password.length < 6 ||
                   !password.match(/[A-Z]/) ||
                   !password.match(/[0-9]/) ||
                   !password.match(/[a-z]/) ||

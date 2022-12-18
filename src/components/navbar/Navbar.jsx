@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 import { Nav, NavDropdown, Container, Navbar } from "react-bootstrap";
 import logo from "../../assets/logo.png";
 
-import { ButtonGroup, Dropdown} from "react-bootstrap";
+import { ButtonGroup, Dropdown } from "react-bootstrap";
 
 export default function NavigationBar() {
+  const [token, setToken] = useState("");
+  const [log, setLog] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("user") !== null) {
+      setToken(localStorage.getItem("user"));
+      setLog(true);
+    }
+  }, []);
+
+  function onClick() {
+    setToken();
+    setLog(false);
+    localStorage.clear("user");
+  }
   return (
     <>
       <Navbar bg="black" variant="dark" className="navigation-container">
         <Container>
-          <Navbar.Brand href="home"
-          className="navigation-brand">
-            <img
-              alt=""
-              src={logo}
-              width="40"
-              height="30"
-              className="d-inline-block align-top"
-            />{" "}
+          <Navbar.Brand href="home" className="navigation-brand">
+            <img alt="" src={logo} width="40" height="30" className="d-inline-block align-top" />{" "}
             <p className="navigation-brand-txt">ANONIMI</p>
           </Navbar.Brand>
 
@@ -27,24 +35,18 @@ export default function NavigationBar() {
             <Nav>
               <NavDropdown title="Features" id="basic-nav-dropdown" className="centered-nav-item">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               </NavDropdown>
 
-              <Nav.Link href="#link" className="centered-nav-item">Pricing</Nav.Link>
+              <Nav.Link href="#link" className="centered-nav-item">
+                Pricing
+              </Nav.Link>
 
               <NavDropdown title="About" id="basic-nav-dropdown" className="centered-nav-item">
-                <NavDropdown.Item  href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2" >
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3" >
-                  Something
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -52,15 +54,25 @@ export default function NavigationBar() {
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
               <ButtonGroup className="btn-group">
-                <Nav.Link href="login">
-                  <button className="btn-login">Sign in</button>
-                  </Nav.Link>
-                
-                <Nav.Link href="register">
-                  <button className="btn-register">Try for free</button>
-                </Nav.Link>
+                {log ? (
+                  <button onClick={onClick} className="btn-register">
+                    Sign out
+                  </button>
+                ) : (
+                  <div style={{ display: "flex" }}>
+                    <Nav.Link href="login">
+                      <button className="btn-login">Sign in</button>
+                    </Nav.Link>
 
-                <NavDropdown title="LN" className="btn-ln" disabled={true}>EN</NavDropdown>
+                    <Nav.Link href="register">
+                      <button className="btn-register">Try for free</button>
+                    </Nav.Link>
+                  </div>
+                )}
+
+                <NavDropdown title="LN" className="btn-ln" disabled={true}>
+                  EN
+                </NavDropdown>
               </ButtonGroup>
             </Navbar.Text>
           </Navbar.Collapse>
