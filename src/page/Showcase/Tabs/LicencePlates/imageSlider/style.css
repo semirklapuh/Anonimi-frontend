@@ -61,3 +61,17 @@
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
     transform: translate3d(50%, 0, -100px);
 }
+
+#second {
+    min-width: 160px;
+    color: rgb(216, 204, 189);
+}
+
+#second:hover {
+    background-color: grey;
+    color: white;
+}
+
+#first, #third {
+    color: rgba(168, 168, 168, 0.452);
+}

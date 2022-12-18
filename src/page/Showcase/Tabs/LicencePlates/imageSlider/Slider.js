@@ -149,14 +149,19 @@ const Slider = () => {
       </div>
       <div className="row-btn">
         <ButtonGroup aria-label="primary button group">
-          <Button className="type-btn" onClick={handleBlur}>
+          <Button
+            className="type-btn"
+            onClick={handleBlur}
+            id="first"
+            disabled={true}
+          >
             Blur
           </Button>
-          <Button className="type-btn" disabled={true}>
+          <Button className="type-btn" onClick={handleBlur} id="second">
             Pixelated
           </Button>
 
-          <Button className="type-btn" disabled={true}>
+          <Button className="type-btn" id="third" disabled={true}>
             Deep natural
           </Button>
         </ButtonGroup>
