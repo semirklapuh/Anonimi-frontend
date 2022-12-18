@@ -10,6 +10,7 @@
     margin-top: 10px;
 }
 
+
 .form-control {
     margin: 5px 10px;
     max-width: 250px;
@@ -53,4 +54,64 @@
 
 .form-header-div {
     padding: 10px;
+    color: white;
+}
+
+
+.prgf {
+    color: white;
+    font-size: 14px;
+}
+
+.btn-common-type {
+    margin: 5px;
+    border-radius: 2px;
+    padding: 5px 20px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    background: #c6f985;
+    color: #000;
+    width: 100px;
+    border: 1px solid rgb(163, 161, 161);
+    min-height: 40px;
+}
+
+.btn {
+    max-width: 260px;
+}
+
+.btn-common-type:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: #bffc87c4;
+    box-shadow: none;
+}
+
+.btn-common-type:disabled {
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+    background-color: grey;
+    box-shadow: none;
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -25px;
+    margin-top: 4.5px;
+    background-color: white;
+    height: 36px;
+    margin-right: 50px;
+}
+
+.input-group, .group {
+    margin-left: 20px;
+}
+
+.email-input {
+    min-width: 280px;
 }

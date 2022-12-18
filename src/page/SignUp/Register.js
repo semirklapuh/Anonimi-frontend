@@ -115,7 +115,7 @@ const Register = () => {
                 <h5>ANONIMI</h5>
               </div>
             </div>
-            <p>Create your Account</p>
+            <p className="prgf">Create your Account</p>
             <div className="auth-form-container text-start">
               <form
                 className="auth-form"
@@ -124,7 +124,7 @@ const Register = () => {
                 autoComplete={"off"}
                 ref={form}
               >
-                <div className="name mb-3">
+                <div className="name mb-3 group ">
                   <input
                     type="text"
                     className={`form-control ${
@@ -138,20 +138,8 @@ const Register = () => {
                     placeholder="First name"
                     onChange={(e) => setFirstName(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.firstName
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.firstName
-                      ? validate.validate.firstName[0]
-                      : ""}
-                  </div>
                 </div>
-                <div className="name mb-3">
+                <div className="name mb-3 group ">
                   <input
                     type="text"
                     className={`form-control ${
@@ -165,21 +153,9 @@ const Register = () => {
                     placeholder="Last name"
                     onChange={(e) => setLastName(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.lastName
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.lastName
-                      ? validate.validate.lastName[0]
-                      : ""}
-                  </div>
                 </div>
 
-                <div className="email mb-3">
+                <div className="email mb-2 email-input group ">
                   <input
                     type="email"
                     className={`form-control ${
@@ -193,22 +169,10 @@ const Register = () => {
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.email
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.email
-                      ? validate.validate.email[0]
-                      : ""}
-                  </div>
                 </div>
 
-                <div className="password mb-2">
-                  <div className="input-group">
+                <div className="password mb-3">
+                  <div className="input-group mb-1">
                     <input
                       type={showPassword ? "text" : "password"}
                       className={`form-control ${
@@ -234,18 +198,6 @@ const Register = () => {
                         }
                       ></i>{" "}
                     </button>
-
-                    <label
-                      className={`red-label ${
-                        validate.validate && validate.validate.password
-                          ? "d-block"
-                          : "d-none"
-                      }`}
-                    >
-                      {validate.validate && validate.validate.password
-                        ? validate.validate.password[0]
-                        : ""}
-                    </label>
                   </div>
 
                   <div className="password">
@@ -276,18 +228,6 @@ const Register = () => {
                         ></i>{" "}
                       </button>
                     </div>
-
-                    <label
-                      className={`red-label  ${
-                        validate.validate && validate.validate.password
-                          ? "d-block"
-                          : "d-none"
-                      }`}
-                    >
-                      {validate.validate && validate.validate.password
-                        ? validate.validate.password[0]
-                        : ""}
-                    </label>
                   </div>
                 </div>
                 {password === null || password === "" ? (
@@ -302,7 +242,7 @@ const Register = () => {
                           password.length < 6) && (
                           <label className="red-label">
                             The password must have at least 1 uppercase letter,{" "}
-                            <br></br> 1 lowercase letter, 1 number and 6
+                            <br></br> 1 lowercase letter, 1 number and minimum 6
                             characters.
                           </label>
                         )}
@@ -330,12 +270,12 @@ const Register = () => {
                     <button
                       disabled={true}
                       type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
                     >
                       Submit
                     </button>
                   ) : (
-                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit">
+                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type">
                       Submit
                     </button>
                   )}
@@ -343,7 +283,7 @@ const Register = () => {
               </form>
 
               <hr />
-              <div className="auth-option text-center pt-2">
+              <div className="auth-option text-center pt-2 prgf">
                 Have an account?{" "}
                 <Link className="text-link" to="/login">
                   Sign in
@@ -354,6 +294,7 @@ const Register = () => {
                 <button
                   type="submit"
                   className="btn btn-secondary w-100 theme-btn mx-auto"
+                  disabled={true}
                 >
                   Continue with Google
                 </button>

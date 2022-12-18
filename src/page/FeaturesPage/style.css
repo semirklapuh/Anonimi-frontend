@@ -4,7 +4,7 @@
 .features-section {
     background-color: hsl(0, 0%, 100%);
     min-height: 900px;
-    margin-top: 870px;
+    margin-top: 892px;
     color: black;
     text-align: left;
 }
@@ -29,7 +29,9 @@
     display: flex;
     color: black;
     align-items: flex-start;
+
 }
+
 
 .box-centered {
     display: flex;

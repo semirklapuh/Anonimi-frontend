@@ -24,6 +24,7 @@
 
 }
 
+
 .upload-container:hover {
 
     background-color: #77a59fa4;
@@ -43,12 +44,22 @@
     width: 100px;
 }
 
+
 .paragraf {
     font-family: "Lato";
     font-size: 12px;
     transition: 0.2s color;
     text-align: center;
     color: #C6F985;
+    padding: 1px;
+}
+
+.paragraf-1 {
+    font-family: "Lato";
+    font-size: 12px;
+    transition: 0.2s color;
+    text-align: center;
+    color: #ffffff;
     padding: 1px;
 }
 

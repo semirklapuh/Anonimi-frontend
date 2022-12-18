@@ -6,12 +6,12 @@ import Hero from "./WelcomePage";
 const Main = () => {
   return (
     <div className="main">
-      <div>
+      <div className="section">
         <Hero />
       </div>
-      <>
+      <div>
         <Features />
-      </>
+      </div>
       <div>
         <Showcase />
       </div>

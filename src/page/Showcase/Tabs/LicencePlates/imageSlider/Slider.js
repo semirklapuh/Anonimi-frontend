@@ -152,16 +152,16 @@ const Slider = () => {
           <Button
             className="type-btn"
             onClick={handleBlur}
-            id="first"
+            id="first1"
             disabled={true}
           >
             Blur
           </Button>
-          <Button className="type-btn" onClick={handleBlur} id="second">
+          <Button className="type-btn" onClick={handleBlur} id="second1">
             Pixelated
           </Button>
 
-          <Button className="type-btn" id="third" disabled={true}>
+          <Button className="type-btn" id="third1" disabled={true}>
             Deep natural
           </Button>
         </ButtonGroup>

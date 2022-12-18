@@ -10,12 +10,13 @@ const LoaderSpinner = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        marginBottom: "10px",
       }}
     >
       <div className="flex justify-center items-center ">
         <TailSpin
-          height="150"
-          width="150"
+          height="50"
+          width="50"
           color="#4fa94d"
           ariaLabel="tail-spin-loading"
           radius="1"

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from "../../components/Forms/Forms";
 import apiClient from "../../http/http-common";
+import logo from "../../assets/logo.png";
 import "./style.css";
 
 const Forgot = () => {
@@ -57,7 +58,15 @@ const Forgot = () => {
       <div className="col-12 auth-main-col text-center">
         <div className="d-flex flex-column align-content-end">
           <div className="auth-body mx-auto">
-            <p>Forgot Password</p>
+            <div>
+              <div className="form-header-div">
+                <img src={logo} alt="logo" />
+              </div>
+              <div className="form-header-div">
+                <h5>ANONIMI</h5>
+              </div>
+            </div>
+            <p className="prgf">Forgot Password</p>
             <div className="auth-form-container text-start">
               <form
                 className="auth-form"
@@ -80,18 +89,6 @@ const Forgot = () => {
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.email
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.email
-                      ? validate.validate.email[0]
-                      : ""}
-                  </div>
                 </div>
 
                 <div className="text-center">
@@ -99,14 +96,14 @@ const Forgot = () => {
                     <button
                       disabled={true}
                       type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
                     >
                       Submit
                     </button>
                   ) : (
                     <button
                       type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
                     >
                       Submit
                     </button>

@@ -62,16 +62,17 @@
     transform: translate3d(50%, 0, -100px);
 }
 
-#second {
+#second1 {
     min-width: 160px;
     color: rgb(216, 204, 189);
 }
 
-#second:hover {
+#second1:hover {
     background-color: grey;
     color: white;
 }
 
-#first, #third {
+#first1, #third1 {
     color: rgba(168, 168, 168, 0.452);
+    min-width: 160px;
 }

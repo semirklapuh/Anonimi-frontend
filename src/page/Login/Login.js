@@ -118,7 +118,7 @@ const Login = () => {
                 <h5>ANONIMI</h5>
               </div>
             </div>
-            <p>Login to your account</p>
+            <p className="prgf">Login to your account</p>
             <div className="auth-form-container text-start">
               <form
                 className="auth-form"
@@ -127,7 +127,7 @@ const Login = () => {
                 autoComplete={"off"}
                 ref={form}
               >
-                <div className="email mb-3">
+                <div className="email mb-3 em">
                   <input
                     type="email"
                     className={`form-control ${
@@ -141,18 +141,6 @@ const Login = () => {
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                   />
-
-                  <div
-                    className={`invalid-feedback text-start ${
-                      validate.validate && validate.validate.email
-                        ? "d-block"
-                        : "d-none"
-                    }`}
-                  >
-                    {validate.validate && validate.validate.email
-                      ? validate.validate.email[0]
-                      : ""}
-                  </div>
                 </div>
 
                 <div className="password mb-3">
@@ -194,11 +182,11 @@ const Login = () => {
                     </p>
                   </div>
 
-                  <div className="extra mt-3 row justify-content-between">
+                  <div className="extra mt-3  row justify-content-between">
                     <div className="col-6">
                       <div className="form-check">
                         <input
-                          className="form-check-input"
+                          className="form-check-input "
                           type="checkbox"
                           id="remember"
                           checked={remember}
@@ -210,7 +198,7 @@ const Login = () => {
                       </div>
                     </div>
                     <div className="col-6">
-                      <div className="forgot-password text-end">
+                      <div className="forgot-password text-end fp">
                         <Link to="/forgot-password">Forgot password?</Link>
                       </div>
                     </div>
@@ -224,14 +212,14 @@ const Login = () => {
                     <button
                       disabled={true}
                       type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
                     >
                       Submit
                     </button>
                   ) : (
                     <button
                       type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit"
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
                     >
                       Submit
                     </button>
@@ -240,7 +228,7 @@ const Login = () => {
               </form>
 
               <hr />
-              <div className="auth-option text-center pt-2">
+              <div className="auth-option text-center pt-2 prgf">
                 No Account?{" "}
                 <Link className="text-link" to="/register">
                   Sign up{" "}
@@ -252,6 +240,7 @@ const Login = () => {
                 <button
                   type="submit"
                   className="btn btn-secondary w-100 theme-btn mx-auto"
+                  disabled={true}
                 >
                   Continue with Google
                 </button>

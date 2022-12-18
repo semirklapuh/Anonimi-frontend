@@ -5,3 +5,7 @@
     max-height: fit-content;
     background-color: hsl(189, 86%, 16%);
 }
+
+.section {
+    height: 900px;
+}

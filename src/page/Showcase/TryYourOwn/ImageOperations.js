@@ -23,7 +23,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
   const [typeMode, selectTypeMode] = useState("");
   const [imageUrl, setImageUrl] = useState();
   const [dataURL, setDataURL] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [previewImage, setPreviewImage] = useState(false);
   const [file, setFile] = useState();
   const [fileUploaded, setFileUploaded] = useState(false);
@@ -94,7 +94,6 @@ function Upload({ onDrop, maxFiles = 1 }) {
       .then((res) => {
         console.log(res.data);
         setDataURL(res.data.image);
-        setLoading(false);
         setPreviewImage(true);
       });
   };
@@ -183,7 +182,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
               onDownloadSuccess={() => console.log("File download initiated")}
               onDownloadError={() => console.warn("Download failed to start")}
             >
-              Click to download
+              Download
             </Base64Downloader>
           </div>
         </div>
@@ -213,7 +212,18 @@ function Upload({ onDrop, maxFiles = 1 }) {
               <div>
                 {files && (
                   <div>
-                    <img src={file} alt="preview" width="400" height="auto" />
+                    <img src={file} alt="preview" height="300" />
+
+                    <p className="paragraf-1">
+                      Your file has been successfully uploaded and waiting for
+                      processing. <br></br>
+                      Please select the type of object and type of anonymization
+                      you want..
+                    </p>
+                    <p className="paragraf">
+                      The image is being processed, please wait a few moments
+                    </p>
+                    <LoaderSpinner />
                   </div>
                 )}
               </div>
@@ -223,7 +233,9 @@ function Upload({ onDrop, maxFiles = 1 }) {
                   <img src={upload} alt="upload" className="upload-icon" />
                 </div>
                 <h2 className="title paragraf">Upload files here!</h2>
-                <p className="paragraf">Click to browse or drag and drop</p>
+                <p className="paragraf">
+                  Click to browse. Supported formats: jpeg, jpg, png.
+                </p>
                 <p className="text-type-image paragraf">
                   Supported formats: jpeg, jpg, png, avi, mkv... 20MB, 5
                   images/1 video per session{" "}
