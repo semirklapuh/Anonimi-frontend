@@ -107,6 +107,7 @@
     height: 36px;
     margin-right: 50px;
     z-index: 999;
+    width: 50px;
 }
 
 .input-group, .group {
