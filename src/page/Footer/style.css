@@ -1,0 +1,84 @@
+@import "~@fontsource/roboto";
+@import "~@fontsource/lato";
+@import "~@fontsource/josefin-sans";
+
+#footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.footer-top {
+    background: linear-gradient(91.2deg, #C6F985 24.05%, #236A66 54.01%, #124346 76.89%, #0E262D 105.16%);
+    mix-blend-mode: normal;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-top-p {
+
+    font-family: "Lato";
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 56px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+    margin-right: 80px;
+
+}
+
+.footer-bottom {
+    min-height: 400px;
+    display: flex;
+    flex-direction: row;
+    color: #f5f5f5;
+
+}
+
+.footer-bottom-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 40px;
+}
+
+.footer-bottom-logo-text {
+    font-family: "Josefin Sans";
+    font-size: 33px;
+    font-weight: 600;
+    line-height: 65px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 15px;
+
+}
+
+.footer-bottom-subtitle {
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.footer-bottom-text {
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    height: 99px;
+    width: 311px;
+
+
+
+}

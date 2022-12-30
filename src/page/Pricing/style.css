@@ -1,0 +1,111 @@
+@import "~@fontsource/roboto";
+@import "~@fontsource/lato";
+
+#pricing {
+    color: #f5f5f5;
+}
+
+.pricing-section-title {
+    font-family: "Roboto";
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 30px 0;
+
+}
+
+.pricing-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.pricing-card {
+    height: 1050px;
+    width: 350px;
+    margin: 20px;
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    color: #000;
+
+}
+
+.card-body {
+    margin: 150px 0;
+}
+
+.card-body-paid {
+    margin: 20px 0;
+}
+
+.card-header {
+    margin-top: 30px;
+}
+
+
+.card-title {
+    font-family: "Lato";
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 56px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+
+
+
+.card-subtitle {
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.body-title {
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 15px;
+
+}
+
+.body-p {
+    font-family: "Lato";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.price {
+    font-family: "Lato";
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 96px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.price-row {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,167 @@
+@import "~@fontsource/roboto";
+@import "~@fontsource/lato";
+
+#about-ai {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.about-ai- {
+    display: flex;
+    flex-direction: column;
+}
+
+.ai-title {
+    font-family: "Roboto";
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.about-ai-header {
+    height: 250px;
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+
+    flex-direction: column;
+    margin: 50px 0;
+}
+
+#ai-face {
+    min-height: 900px;
+    background: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#ai-cars {
+    min-height: 900px;
+    background: #F5F5F5;
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.subsection-text {
+    font-family: "Lato";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    max-width: 500px;
+
+}
+
+.subsection-title-subtitle {
+    font-family: "Lato";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.subsection-title {
+    font-family: "Roboto";
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 44px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 30px;
+    margin-right: 180px;
+
+}
+
+.subsection-title-car {
+    font-family: "Roboto";
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 44px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 30px;
+    margin-right: 25px;
+
+}
+
+.subsection-p {
+    padding: 20px 0;
+}
+
+.ai-image {
+    height: 280px;
+    width: 280px;
+}
+
+.ai-image-box {
+    min-width: 300px;
+    min-height: 300px;
+    padding: 20px;
+}
+
+.ai-image-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#ai-doc {
+    min-height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #0E262D;
+
+}
+
+.doc-p {
+    font-family: "Lato";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+
+
+}
+
+.doc-title {
+    font-family: "Roboto";
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 100px;
+}

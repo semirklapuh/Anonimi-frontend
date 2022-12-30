@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./style.css";
 
 import { Nav, NavDropdown, Container, Navbar } from "react-bootstrap";
@@ -22,6 +22,14 @@ export default function NavigationBar() {
     setLog(false);
     localStorage.clear("user");
   }
+
+  const handleClickScroll1 = () => {
+    const element = document.getElementById("industries-section");
+    if (element) {
+      element.scrollIntoView();
+    }
+  };
+
   return (
     <>
       <Navbar bg="black" variant="dark" className="navigation-container">
@@ -33,20 +41,35 @@ export default function NavigationBar() {
 
           <Navbar.Collapse className="justify-content-center centered-nav">
             <Nav>
-              <NavDropdown title="Features" id="basic-nav-dropdown" className="centered-nav-item">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown title="Product" id="basic-nav-dropdown" className="centered-nav-item">
+                <NavDropdown.Item href="anonimi-features">Features overview</NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-platform">Anonimi platform</NavDropdown.Item>
+                <NavDropdown.Item href="about-ai">Face anonymization</NavDropdown.Item>
+                <NavDropdown.Item href="about-ai">Licence plates detection</NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-platform">Watermarks</NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-features">Api access</NavDropdown.Item>
+                <Dropdown.Divider />
+                <NavDropdown.Item href="home">Showcase</NavDropdown.Item>
+                <NavDropdown.Item href="api">Demo</NavDropdown.Item>
+                <Dropdown.Divider />
+                <NavDropdown.Item href="home">Industries</NavDropdown.Item>
+                <Dropdown.Divider />
+                <NavDropdown.Item href="about-ai">Documentations</NavDropdown.Item>
+                <NavDropdown.Item href="home">FAQ</NavDropdown.Item>
+                
               </NavDropdown>
 
-              <Nav.Link href="#link" className="centered-nav-item">
+              <Nav.Link href="pricing" className="centered-nav-item">
                 Pricing
               </Nav.Link>
 
               <NavDropdown title="About" id="basic-nav-dropdown" className="centered-nav-item">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="about">Our vision</NavDropdown.Item>
+                <NavDropdown.Item href="about">Team</NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-platform">Privacy</NavDropdown.Item>
+                <Dropdown.Divider />
+                <NavDropdown.Item href="anonimi-platform">Contact Us</NavDropdown.Item>
+
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

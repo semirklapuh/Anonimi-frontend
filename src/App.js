@@ -11,6 +11,11 @@ import Login from "./page/Login/Login";
 import Forgot from "./page/ForgotPass/Forgot";
 import Registration from "./page/SignUp/Register";
 import AdminPanel from "./page/AdminPanel/AdminPanel";
+import { AboutAI } from "./page/FeaturesPage/FeatureItems";
+import { Pricing } from "./page/Pricing";
+import { AnonimiPlatform } from "./page/AnonimiPlatform";
+import { AnonimiFeatures } from "./page/AnonimiFeatures";
+import { About } from "./page/About";
 
 function App() {
   return (
@@ -22,6 +27,11 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<Forgot />} />
+        <Route path="/about-ai" element={<AboutAI />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/anonimi-features" element={<AnonimiFeatures />} />
+        <Route path="/anonimi-platform" element={<AnonimiPlatform />} />
+        <Route path="/about" element={<About />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>
     </div>

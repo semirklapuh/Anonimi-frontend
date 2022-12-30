@@ -1,10 +1,9 @@
 @import "~@fontsource/lato";
 @import "~@fontsource/roboto";
 
-.features-section {
-    background-color: hsl(0, 0%, 100%);
+.features-section-1 {
+    background-color: #f5f5f5;
     min-height: 950px;
-    margin-top: 892px;
     color: black;
     text-align: left;
 }

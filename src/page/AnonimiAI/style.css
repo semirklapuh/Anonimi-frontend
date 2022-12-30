@@ -1,0 +1,66 @@
+@import "~@fontsource/roboto";
+@import "~@fontsource/lato";
+
+#anonimi-ai-section {
+    min-height: 650px;
+    background-color: white;
+    color: #184952;
+    width: 100%;
+}
+
+.ai-column {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ai-row {
+    display: flex;
+    flex-direction: row;
+    max-width: 1400px;
+    margin-bottom: 40px;
+}
+
+.ai-header {
+    margin: 50px 0px;
+}
+
+.ai-main-title {
+    font-family: "Roboto";
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 90px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.ai-title {
+    font-family: "Roboto";
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 51px;
+    letter-spacing: 0em;
+    text-align: center;
+
+
+}
+
+.ai-info-box {
+    height: 256px;
+    width: 500px;
+    border-radius: nullpx;
+    padding: 20px;
+    margin: 0 40px;
+}
+
+.ai-description {
+    font-family: "Lato";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 40px 0px;
+
+}

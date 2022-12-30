@@ -1,0 +1,278 @@
+@import "~@fontsource/roboto";
+@import "~@fontsource/lato";
+
+#anonimi-features {
+    min-height: 650px;
+    color: #184952;
+    background-color: white;
+    width: 100%;
+}
+
+.an-f-header {
+    height: 300px;
+    color: white;
+    background-color: #184952;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.an-f-title {
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-family: "Roboto";
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: left;
+
+
+}
+
+.an-f-p {
+    font-family: "Lato";
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.an-platform-0 {
+    display: flex;
+    flex-direction: row;
+    min-height: 1000px;
+    background-color: #F5F5F5;
+    color: black;
+}
+
+.an-platform-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.left-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.an-list {
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.an-list-text {
+    font-family: "Lato";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 49px;
+    width: 600px;
+    left: 0px;
+    top: 40px;
+    border-radius: nullpx;
+
+
+}
+
+.an-p-2 {
+    margin-left: 150px;
+}
+
+.an-p-1 {
+    margin: 20px 0;
+}
+
+.an-p-title {
+    font-family: "Roboto";
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.an-p-p {
+    font-family: "Lato";
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.an-platform-img, .an-platform-img-1 {
+    height: 269px;
+    width: 514px;
+    left: 1124px;
+    top: 270px;
+    border-radius: 8px;
+
+}
+
+.an-platform-img-1 {
+    margin-right: 50px;
+}
+
+.an-platform-img {
+    margin-top: 50px
+}
+
+.an-api-access {
+    background-color: #030E11;
+    height: 900px;
+    width: 100%;
+    color: #F5F5F5;
+
+
+}
+
+.an-api-access-title {
+    font-family: "Roboto";
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: left;
+    align-items: flex-start;
+    margin: 0 150px;
+    padding-top: 100px;
+
+}
+
+.an-api-access-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.api-left, .api-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.api-subtitle {
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 50px;
+
+}
+
+.api-p {
+    font-family: "Lato";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 156.50990295410156px;
+    width: 584px;
+
+    border-radius: nullpx;
+
+
+}
+
+.api-l {
+
+    font-family: "Lato";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 5px;
+
+
+}
+
+.api-b {
+    font-family: "Lato";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    padding: 5px;
+
+
+
+}
+
+#hosting {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #0E262D;
+
+}
+
+.hosting-title {
+    padding-bottom: 80px;
+    font-family: "Roboto";
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.hosting-subtitle {
+    font-family: "Lato";
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.hosting-l {
+    font-family: "Lato";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 5px;
+
+}

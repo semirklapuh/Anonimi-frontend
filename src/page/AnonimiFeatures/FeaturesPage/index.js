@@ -1,17 +1,17 @@
 import React from "react";
 import "./style.css";
 
-import firstIcon from "../../assets/firstIcon.png";
-import secondIcon from "../../assets/secondIcon.png";
-import thirdIcon from "../../assets/thirdIcon.png";
-import fourthIcon from "../../assets/fourthIcon.png";
-import fifthIcon from "../../assets/fifthIcon.png";
-import sixthIcon from "../../assets/sixthIcon.png";
+import firstIcon from "../../../assets/firstIcon.png";
+import secondIcon from "../../../assets/secondIcon.png";
+import thirdIcon from "../../../assets/thirdIcon.png";
+import fourthIcon from "../../../assets/fourthIcon.png";
+import fifthIcon from "../../../assets/fifthIcon.png";
+import sixthIcon from "../../../assets/sixthIcon.png";
 import { Button, Nav } from "react-bootstrap";
 
-const Features = () => {
+const Features1 = () => {
   return (
-    <div id="features-section" className="features-section">
+    <div id="features-section-" className="features-section-1">
       <h2>
         World-class features for secure and efficient anonymization of your data{" "}
       </h2>
@@ -165,4 +165,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default Features1;
