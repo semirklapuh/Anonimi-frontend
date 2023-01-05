@@ -9,9 +9,10 @@ const AdminPanel = () => {
       <div>
         <Sidebar />
       </div>
-      <div>
+      {/* { <div>
         <Tasks />
-      </div>
+      </div> } */}
+      <Tasks/>
     </div>
   );
 };

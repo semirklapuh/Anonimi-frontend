@@ -9,6 +9,7 @@ function GetData() {
   const products = [
     {
       preview: 1,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "George",
       service: "Monkey",
@@ -19,6 +20,7 @@ function GetData() {
     },
     {
       preview: 2,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Jeffrey",
       service: "Giraffe",
@@ -29,6 +31,7 @@ function GetData() {
     },
     {
       preview: 3,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Alice",
       service: "Giraffe",
@@ -39,6 +42,7 @@ function GetData() {
     },
     {
       preview: 4,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Foster",
       service: "Tiger",
@@ -49,6 +53,7 @@ function GetData() {
     },
     {
       preview: 5,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Tracy",
       service: "Bear",
@@ -59,6 +64,7 @@ function GetData() {
     },
     {
       preview: 6,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Joesph",
       service: "Lion",
@@ -69,6 +75,7 @@ function GetData() {
     },
     {
       preview: 7,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Tania",
       service: "Deer",
@@ -79,6 +86,7 @@ function GetData() {
     },
     {
       preview: 8,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Chelsea",
       service: "Tiger",
@@ -89,6 +97,7 @@ function GetData() {
     },
     {
       preview: 9,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Benedict",
       service: "Tiger",
@@ -99,6 +108,7 @@ function GetData() {
     },
     {
       preview: 10,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Chadd",
       service: "Lion",
@@ -109,6 +119,7 @@ function GetData() {
     },
     {
       preview: 11,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Delphine",
       service: "Deer",
@@ -119,6 +130,7 @@ function GetData() {
     },
     {
       preview: 12,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Elinore",
       service: "Bear",
@@ -129,6 +141,7 @@ function GetData() {
     },
     {
       preview: 13,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Stokes",
       service: "Tiger",
@@ -139,6 +152,7 @@ function GetData() {
     },
     {
       preview: 14,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Tamara",
       service: "Lion",
@@ -149,6 +163,7 @@ function GetData() {
     },
     {
       preview: 15,
+      project: "Project1",
       date: "12.02.2022.",
       taskName: "Zackery",
       service: "Bear",
@@ -161,6 +176,7 @@ function GetData() {
 
   const columns = [
     { dataField: "preview", text: "Preview", sort: true },
+    { dataField: "project", text: "Project", sort: true },
     { dataField: "date", text: "Date", sort: true },
     { dataField: "taskName", text: "Task name", sort: true },
     { dataField: "service", text: "Services", sort: true },

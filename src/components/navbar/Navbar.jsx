@@ -6,6 +6,8 @@ import logo from "../../assets/logo.png";
 
 import { ButtonGroup, Dropdown } from "react-bootstrap";
 
+import { NavLink, Link } from "react-router-dom";
+
 export default function NavigationBar() {
   const [token, setToken] = useState("");
   const [log, setLog] = useState(false);
@@ -59,7 +61,7 @@ export default function NavigationBar() {
                 
               </NavDropdown>
 
-              <Nav.Link href="pricing" className="centered-nav-item">
+              <Nav.Link as={Link} to="pricing" className="centered-nav-item">
                 Pricing
               </Nav.Link>
 

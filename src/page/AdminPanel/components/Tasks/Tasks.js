@@ -7,7 +7,7 @@ const Tasks = () => {
     <div className="tasks">
       <h2>Tasks</h2>
 
-      <div></div>
+ 
 
       <div className="getdata-div">
         <GetData />
