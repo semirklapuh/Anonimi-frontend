@@ -12,7 +12,9 @@ const Hero = () => {
   return (
     <div>
       <div className="overlay">
-        <video src={videoBg} autoPlay loop muted />
+        <video autoPlay muted>
+        <source src={videoBg} type='video/mp4'/>
+           </video>
         <div className="content">
           <div>
             <h1 className="title">Anonymizer like no other</h1>
