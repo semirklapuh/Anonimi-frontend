@@ -107,14 +107,7 @@ const Register = () => {
       <div className="col-12   auth-main-col text-center">
         <div className="d-flex flex-column align-content-end">
           <div className="auth-body mx-auto">
-            <div>
-              <div className="form-header-div">
-                <img src={logo} alt="logo" />
-              </div>
-              <div className="form-header-div">
-                <h5>ANONIMI</h5>
-              </div>
-            </div>
+            <p className="register__welcome_title">Welcome!</p>
             <p className="prgf">Create your Account</p>
             <div className="auth-form-container text-start">
               <form
@@ -122,9 +115,11 @@ const Register = () => {
                 method="POST"
                 onSubmit={submitUser}
                 autoComplete={"off"}
-                ref={form}
-              >
-                <div className="name mb-3 group ">
+                ref={form}>
+                <div className="name  group divLabel">
+                  <label className="ms-2 mb-1" htmlFor="firstName">
+                    First Name
+                  </label>
                   <input
                     type="text"
                     className={`form-control ${
@@ -135,11 +130,14 @@ const Register = () => {
                     id="firstName"
                     name="firstName"
                     value={firstName}
-                    placeholder="First name"
+                    placeholder="Your first name"
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                 </div>
-                <div className="name mb-3 group ">
+                <div className="name  group divLabel">
+                  <label className="ms-2 mb-1" htmlFor="lastName">
+                    Last name
+                  </label>
                   <input
                     type="text"
                     className={`form-control ${
@@ -150,12 +148,15 @@ const Register = () => {
                     id="lastName"
                     name="lastName"
                     value={lastName}
-                    placeholder="Last name"
+                    placeholder="Your last name"
                     onChange={(e) => setLastName(e.target.value)}
                   />
                 </div>
 
-                <div className="email mb-2 email-input group ">
+                <div className="email  email-input group divLabel">
+                  <label className="ms-2 mb-1" htmlFor="email">
+                    Email
+                  </label>
                   <input
                     type="email"
                     className={`form-control ${
@@ -166,41 +167,47 @@ const Register = () => {
                     id="email"
                     name="email"
                     value={email}
-                    placeholder="Email"
+                    placeholder="Your email"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
-                <div className="password mb-3">
-                  <div className="input-group mb-1">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      className={`form-control ${
-                        validate.validate && validate.validate.password
-                          ? "is-invalid "
-                          : ""
-                      }`}
-                      name="password"
-                      id="password"
-                      value={password}
-                      placeholder="Password"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
+                <div className="password mb-3 divLabel">
+                  <div className="password divLabel">
+                    <label className="ms-2 mb-1" htmlFor="Password">
+                      Password
+                    </label>
+                    <div className="input-group mb-1">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        className={`form-control ${
+                          validate.validate && validate.validate.password
+                            ? "is-invalid "
+                            : ""
+                        }`}
+                        name="password"
+                        id="password"
+                        value={password}
+                        placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
 
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-sm btn-icon"
-                      onClick={(e) => togglePassword(e)}
-                    >
-                      <i
-                        className={
-                          showPassword ? "far fa-eye" : "far fa-eye-slash"
-                        }
-                      ></i>{" "}
-                    </button>
+                      <button
+                        type="button"
+                        className="btn btn-outline-primary btn-sm btn-icon"
+                        onClick={(e) => togglePassword(e)}>
+                        <i
+                          className={
+                            showPassword ? "far fa-eye" : "far fa-eye-slash"
+                          }></i>{" "}
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="password">
+                  <div className="password mt-1 divLabel">
+                    <label className="ms-2 mb-1" htmlFor="confirm Password">
+                      Password confirm
+                    </label>
                     <div className="input-group">
                       <input
                         type={showPassword ? "text" : "password"}
@@ -219,13 +226,11 @@ const Register = () => {
                       <button
                         type="button"
                         className="btn btn-outline-primary btn-sm btn-icon"
-                        onClick={(e) => togglePassword(e)}
-                      >
+                        onClick={(e) => togglePassword(e)}>
                         <i
                           className={
                             showPassword ? "far fa-eye" : "far fa-eye-slash"
-                          }
-                        ></i>{" "}
+                          }></i>{" "}
                       </button>
                     </div>
                   </div>
@@ -270,35 +275,16 @@ const Register = () => {
                     <button
                       disabled={true}
                       type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
-                    >
-                      Submit
+                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type register__submitButton-d">
+                      Create account
                     </button>
                   ) : (
-                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type">
-                      Submit
+                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type register__submitButton">
+                      Create account
                     </button>
                   )}
                 </div>
               </form>
-
-              <hr />
-              <div className="auth-option text-center pt-2 prgf">
-                Have an account?{" "}
-                <Link className="text-link" to="/login">
-                  Sign in
-                </Link>
-              </div>
-              <br />
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn btn-secondary w-100 theme-btn mx-auto"
-                  disabled={true}
-                >
-                  Continue with Google
-                </button>
-              </div>
             </div>
           </div>
         </div>
