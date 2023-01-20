@@ -4,6 +4,9 @@ import Form from "../../components/Forms/Forms";
 import apiClient from "../../http/http-common";
 import logo from "../../assets/logo.png";
 import "./style.css";
+import googleLoginIcon from "../../assets/icons8-google-48.png";
+import facebookLoginIcon from "../../assets/icons8-facebook-48.png";
+import appleLoginIcon from "../../assets/apple-logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -106,28 +109,20 @@ const Login = () => {
   };
 
   return (
-    <div className="row g-0 auth-wrapper">
-      <div className="col-12  auth-main-col text-center">
-        <div className="d-flex flex-column align-content-end">
-          <div className="auth-body mx-auto">
-            <div>
-              <div className="form-header-div">
-                <img src={logo} alt="logo" />
-              </div>
-              <div className="form-header-div">
-                <h5>ANONIMI</h5>
-              </div>
-            </div>
+    <div className="g-0 auth-wrapper background__content">
+      <div className="col-12  auth-main-col text-center height">
+        <div className="d-flex flex-column align-content-end height pt">
+          <div className="auth-body mx-auto height">
+            <p className="login__hello">Hello!</p>
             <p className="prgf">Login to your account</p>
-            <div className="auth-form-container text-start">
+            <div className="auth-form-container text-start height">
               <form
                 className="auth-form"
                 method="POST"
                 onSubmit={submitUser}
                 autoComplete={"off"}
-                ref={form}
-              >
-                <div className="email mb-3 em">
+                ref={form}>
+                <div className="email-login mb-3 em">
                   <input
                     type="email"
                     className={`form-control ${
@@ -143,7 +138,7 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="password mb-3">
+                <div className="login__password mb-3">
                   <div className="input-group">
                     <input
                       type={showPassword ? "text" : "password"}
@@ -162,13 +157,11 @@ const Login = () => {
                     <button
                       type="button"
                       className="btn btn-outline-primary btn-sm btn-icon"
-                      onClick={(e) => togglePassword(e)}
-                    >
+                      onClick={(e) => togglePassword(e)}>
                       <i
                         className={
                           showPassword ? "far fa-eye" : "far fa-eye-slash"
-                        }
-                      ></i>{" "}
+                        }></i>{" "}
                     </button>
                   </div>
                   <div>
@@ -176,30 +169,16 @@ const Login = () => {
                       style={{
                         display: displayError ? "block" : "none",
                         color: "red",
-                      }}
-                    >
+                      }}>
                       Wrong email or password
                     </p>
                   </div>
 
                   <div className="extra mt-3  row justify-content-between">
-                    <div className="col-6">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input "
-                          type="checkbox"
-                          id="remember"
-                          checked={remember}
-                          onChange={(e) => setRemember(e.currentTarget.checked)}
-                        />
-                        <label className="form-check-label" htmlFor="remember">
-                          Remember me
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-6">
-                      <div className="forgot-password text-end fp">
-                        <Link to="/forgot-password">Forgot password?</Link>
+                    <div className=""></div>
+                    <div className="">
+                      <div className="login__forgot-password text-end fp">
+                        <Link to="/forgot-password">Forgot your password?</Link>
                       </div>
                     </div>
                   </div>
@@ -212,39 +191,62 @@ const Login = () => {
                     <button
                       disabled={true}
                       type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
-                    >
-                      Submit
+                      className=" loginButton-d">
+                      Log in
                     </button>
                   ) : (
-                    <button
-                      type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type"
-                    >
-                      Submit
+                    <button type="submit" className=" loginButton">
+                      Log in
                     </button>
                   )}
                 </div>
               </form>
 
-              <hr />
+              <div className="login__OR">- OR -</div>
+
+              <div className="login__signInWith">
+                <button
+                  type="submit"
+                  className="login__signInWithButton"
+                  disabled={false}>
+                  <img
+                    src={googleLoginIcon}
+                    height="25px"
+                    width="25px"
+                    alt=""
+                  />
+                  <span className="">Continue with Google</span>
+                </button>
+                <button
+                  type="submit"
+                  className="login__signInWithButton"
+                  disabled={false}>
+                  <img
+                    src={facebookLoginIcon}
+                    height="25px"
+                    width="25px"
+                    alt=""
+                  />
+                  <span>Continue with Facebook</span>
+                </button>
+                <button
+                  type="submit"
+                  className="login__signInWithButton"
+                  disabled={false}>
+                  <img src={appleLoginIcon} height="25px" width="25px" alt="" />
+                  <span>Continue with Apple</span>
+                </button>
+              </div>
               <div className="auth-option text-center pt-2 prgf">
-                No Account?{" "}
+                Don’t have an account?{" "}
                 <Link className="text-link" to="/register">
                   Sign up{" "}
                 </Link>
               </div>
 
+              <p className="contactDiv">contact@anonimi.ai</p>
+
               <br />
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn btn-secondary w-100 theme-btn mx-auto"
-                  disabled={true}
-                >
-                  Continue with Google
-                </button>
-              </div>
             </div>
           </div>
         </div>
