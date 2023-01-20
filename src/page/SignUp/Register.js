@@ -103,188 +103,191 @@ const Register = () => {
   };
 
   return (
-    <div className="row g-0 auth-wrapper">
-      <div className="col-12   auth-main-col text-center">
-        <div className="d-flex flex-column align-content-end">
-          <div className="auth-body mx-auto">
-            <p className="register__welcome_title">Welcome!</p>
-            <p className="prgf">Create your Account</p>
-            <div className="auth-form-container text-start">
-              <form
-                className="auth-form"
-                method="POST"
-                onSubmit={submitUser}
-                autoComplete={"off"}
-                ref={form}>
-                <div className="name  group divLabel">
-                  <label className="ms-2 mb-1" htmlFor="firstName">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    className={`form-control ${
-                      validate.validate && validate.validate.name
-                        ? "is-invalid "
-                        : ""
-                    }`}
-                    id="firstName"
-                    name="firstName"
-                    value={firstName}
-                    placeholder="Your first name"
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </div>
-                <div className="name  group divLabel">
-                  <label className="ms-2 mb-1" htmlFor="lastName">
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    className={`form-control ${
-                      validate.validate && validate.validate.name
-                        ? "is-invalid "
-                        : ""
-                    }`}
-                    id="lastName"
-                    name="lastName"
-                    value={lastName}
-                    placeholder="Your last name"
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
-
-                <div className="email  email-input group divLabel">
-                  <label className="ms-2 mb-1" htmlFor="email">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className={`form-control ${
-                      validate.validate && validate.validate.email
-                        ? "is-invalid "
-                        : ""
-                    }`}
-                    id="email"
-                    name="email"
-                    value={email}
-                    placeholder="Your email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-
-                <div className="password mb-3 divLabel">
-                  <div className="password divLabel">
-                    <label className="ms-2 mb-1" htmlFor="Password">
-                      Password
+    <div className="background__content">
+      <div className=" g-0 auth-wrapper">
+        <div className="pt-5 col-12   auth-main-col text-center height">
+          <div className="pt-5 d-flex flex-column align-content-end height ">
+            <div className="auth-body mx-auto height register__fix">
+              <p className="register__welcome_title">Welcome!</p>
+              <p className="prgf">Create your Account</p>
+              <div className="auth-form-container text-start height">
+                <form
+                  className="auth-form"
+                  method="POST"
+                  onSubmit={submitUser}
+                  autoComplete={"off"}
+                  ref={form}>
+                  <div className="name  group divLabel">
+                    <label className="ms-2 mb-1" htmlFor="firstName">
+                      First Name
                     </label>
-                    <div className="input-group mb-1">
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        className={`form-control ${
-                          validate.validate && validate.validate.password
-                            ? "is-invalid "
-                            : ""
-                        }`}
-                        name="password"
-                        id="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-
-                      <button
-                        type="button"
-                        className="btn btn-outline-primary btn-sm btn-icon"
-                        onClick={(e) => togglePassword(e)}>
-                        <i
-                          className={
-                            showPassword ? "far fa-eye" : "far fa-eye-slash"
-                          }></i>{" "}
-                      </button>
-                    </div>
+                    <input
+                      type="text"
+                      className={`form-control ${
+                        validate.validate && validate.validate.name
+                          ? "is-invalid "
+                          : ""
+                      }`}
+                      id="firstName"
+                      name="firstName"
+                      value={firstName}
+                      placeholder="Your first name"
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </div>
+                  <div className="name  group divLabel">
+                    <label className="ms-2 mb-1" htmlFor="lastName">
+                      Last name
+                    </label>
+                    <input
+                      type="text"
+                      className={`form-control ${
+                        validate.validate && validate.validate.name
+                          ? "is-invalid "
+                          : ""
+                      }`}
+                      id="lastName"
+                      name="lastName"
+                      value={lastName}
+                      placeholder="Your last name"
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
                   </div>
 
-                  <div className="password mt-1 divLabel">
-                    <label className="ms-2 mb-1" htmlFor="confirm Password">
-                      Password confirm
+                  <div className="email  email-input group divLabel">
+                    <label className="ms-2 mb-1" htmlFor="email">
+                      Email
                     </label>
-                    <div className="input-group">
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        className={`form-control ${
-                          validate.validate && validate.validate.password
-                            ? "is-invalid "
-                            : ""
-                        }`}
-                        name="password"
-                        id="confirmPassword"
-                        value={confirmPassword}
-                        placeholder="Confirm password"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-
-                      <button
-                        type="button"
-                        className="btn btn-outline-primary btn-sm btn-icon"
-                        onClick={(e) => togglePassword(e)}>
-                        <i
-                          className={
-                            showPassword ? "far fa-eye" : "far fa-eye-slash"
-                          }></i>{" "}
-                      </button>
-                    </div>
+                    <input
+                      type="email"
+                      className={`form-control ${
+                        validate.validate && validate.validate.email
+                          ? "is-invalid "
+                          : ""
+                      }`}
+                      id="email"
+                      name="email"
+                      value={email}
+                      placeholder="Your email"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
-                </div>
-                {password === null || password === "" ? (
-                  ""
-                ) : (
-                  <>
-                    {password === confirmPassword ? (
-                      <>
-                        {(!password.match(/[A-Z]/) ||
-                          !password.match(/[0-9]/) ||
-                          !password.match(/[a-z]/) ||
-                          password.length < 6) && (
-                          <label className="red-label">
-                            The password must have at least 1 uppercase letter,{" "}
-                            <br></br> 1 lowercase letter, 1 number and minimum 6
-                            characters.
-                          </label>
-                        )}
-                      </>
-                    ) : (
-                      <label className="red-label">
-                        Passwords don´t match.
+
+                  <div className="password mb-3 divLabel">
+                    <div className="password divLabel">
+                      <label className="ms-2 mb-1" htmlFor="Password">
+                        Password
                       </label>
-                    )}
-                  </>
-                )}
+                      <div className="input-group mb-1">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className={`form-control ${
+                            validate.validate && validate.validate.password
+                              ? "is-invalid "
+                              : ""
+                          }`}
+                          name="password"
+                          id="password"
+                          value={password}
+                          placeholder="Password"
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
 
-                <div className="text-center">
-                  {password !== confirmPassword ||
-                  password.length < 6 ||
-                  !password.match(/[A-Z]/) ||
-                  !password.match(/[0-9]/) ||
-                  !password.match(/[a-z]/) ||
-                  email === "" ||
-                  email === null ||
-                  firstName === "" ||
-                  firstName === null ||
-                  lastName === "" ||
-                  lastName === null ? (
-                    <button
-                      disabled={true}
-                      type="submit"
-                      className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type register__submitButton-d">
-                      Create account
-                    </button>
+                        <button
+                          type="button"
+                          className="btn btn-outline-primary btn-sm btn-icon"
+                          onClick={(e) => togglePassword(e)}>
+                          <i
+                            className={
+                              showPassword ? "far fa-eye" : "far fa-eye-slash"
+                            }></i>{" "}
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="password mt-1 divLabel">
+                      <label className="ms-2 mb-1" htmlFor="confirm Password">
+                        Password confirm
+                      </label>
+                      <div className="input-group">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className={`form-control ${
+                            validate.validate && validate.validate.password
+                              ? "is-invalid "
+                              : ""
+                          }`}
+                          name="password"
+                          id="confirmPassword"
+                          value={confirmPassword}
+                          placeholder="Confirm password"
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+
+                        <button
+                          type="button"
+                          className="btn btn-outline-primary btn-sm btn-icon"
+                          onClick={(e) => togglePassword(e)}>
+                          <i
+                            className={
+                              showPassword ? "far fa-eye" : "far fa-eye-slash"
+                            }></i>{" "}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  {password === null || password === "" ? (
+                    ""
                   ) : (
-                    <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type register__submitButton">
-                      Create account
-                    </button>
+                    <>
+                      {password === confirmPassword ? (
+                        <>
+                          {(!password.match(/[A-Z]/) ||
+                            !password.match(/[0-9]/) ||
+                            !password.match(/[a-z]/) ||
+                            password.length < 6) && (
+                            <label className="red-label">
+                              The password must have at least 1 uppercase
+                              letter, <br></br> 1 lowercase letter, 1 number and
+                              minimum 6 characters.
+                            </label>
+                          )}
+                        </>
+                      ) : (
+                        <label className="red-label">
+                          Passwords don´t match.
+                        </label>
+                      )}
+                    </>
                   )}
-                </div>
-              </form>
+
+                  <div className="text-center">
+                    {password !== confirmPassword ||
+                    password.length < 6 ||
+                    !password.match(/[A-Z]/) ||
+                    !password.match(/[0-9]/) ||
+                    !password.match(/[a-z]/) ||
+                    email === "" ||
+                    email === null ||
+                    firstName === "" ||
+                    firstName === null ||
+                    lastName === "" ||
+                    lastName === null ? (
+                      <button
+                        disabled={true}
+                        type="submit"
+                        className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type register__submitButton-d">
+                        Create account
+                      </button>
+                    ) : (
+                      <button className="btn btn-primary w-100 theme-btn mx-auto btn-submit btn-common-type register__submitButton">
+                        Create account
+                      </button>
+                    )}
+                  </div>
+                </form>
+                <p className="contactDiv__register">contact@anonimi.ai</p>
+              </div>
             </div>
           </div>
         </div>

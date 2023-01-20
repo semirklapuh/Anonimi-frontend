@@ -1,48 +1,171 @@
 .auth-body {
-    background-color: black;
-    min-height: 500px;
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 3px;
-    border-radius: 10px;
+  background-color: black;
+  min-height: 500px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3px;
+  border-radius: 10px;
 }
 
 .form-control {
-    /* margin: 10px 10px; */
-    /* max-width: 250px; */
-    text-align: left;
+  /* margin: 10px 10px; */
+  /* max-width: 250px; */
+  text-align: left;
 }
 
 .btn-icon {
-    height: 40px;
-    width: 50px;
+  height: 40px;
+  width: 50px;
 
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .form-check-label {
-    font-size: small;
+  font-size: small;
 }
 
 .form-header-div {
-    padding: 10px;
+  padding: 10px;
 }
 
 .em {
-    margin-left: 23px;
+  margin-left: 23px;
 }
 
 .prgf {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .form-check {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .fp {
-    font-size: 15px;
-    margin-right: 15px;
+  font-size: 15px;
+  margin-right: 15px;
+}
+
+.login__hello {
+  width: 63px;
+  height: 30px;
+  left: calc(50% - 63px / 2 + 0.5px);
+  top: 158px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 122.03%;
+  display: flex;
+  align-items: center;
+  color: #fbfbfb;
+  margin: 0;
+}
+
+.email-login {
+  width: 100%;
+  margin: 0;
+}
+
+.login__forgot-password {
+  width: 100%;
+  display: flex;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140.62%;
+  /* identical to box height, or 20px */
+
+  color: #ffffff !important;
+}
+
+.login__forgot-password > a {
+  color: white;
+}
+
+.login__password {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.loginButton {
+  width: 182px;
+  height: 40px;
+  left: 108px;
+  top: 13.81px;
+  background: #c6f985;
+  border-radius: 32px;
+  border: none;
+}
+
+.loginButton-d {
+  width: 182px;
+  height: 40px;
+  left: 108px;
+  top: 13.81px;
+  border-radius: 32px;
+  background: inherit;
+  border: 1px solid gray;
+  color: grey;
+}
+
+.login__signInWith {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* margin-bottom: 1rem; */
+}
+.login__signInWith > button {
+  width: 100%;
+}
+
+.login__OR {
+  color: white;
+  margin: 1.5rem 0;
+}
+
+.login__signInWithButton {
+  margin-bottom: 1.25rem;
+  padding: 9px;
+  background: #fbfbfb;
+  border-radius: 15.1331px;
+  border: none;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.login__signInWithButton:hover {
+  opacity: 0.8;
+}
+
+.height {
+  height: 100%;
+}
+
+.google-image {
+  /* background: url("../../assets/icons8-google-48.png"); */
+  float: left;
+  width: 30px;
+  height: 30px;
+}
+
+.login__signInWithButton > span {
+  margin-left: 4rem;
+}
+.login__signInWithButton > img {
+  margin-left: 1rem;
+}
+
+.contactDiv{
+    color: white;
+    padding-top: 5rem;
+}
+
+.pt{
+    padding-top: 12rem;
 }

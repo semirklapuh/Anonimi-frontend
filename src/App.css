@@ -1,8 +1,8 @@
 .App {
-    min-height: 900px;
+    /* min-height: 900px;
     max-height: fit-content;
-    min-width: 1500px;
-    display: flex;
+    min-width: 1500px; */
+    /* display: flex; */
     background-color: hsl(189, 86%, 16%);
 
 }

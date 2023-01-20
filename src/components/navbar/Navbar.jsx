@@ -6,7 +6,7 @@ import logo from "../../assets/logo.png";
 
 import { ButtonGroup, Dropdown } from "react-bootstrap";
 
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {
   const [token, setToken] = useState("");
@@ -36,42 +36,70 @@ export default function NavigationBar() {
     <>
       <Navbar bg="black" variant="dark" className="navigation-container">
         <Container>
-          <Navbar.Brand href="home" className="navigation-brand">
-            <img alt="" src={logo} width="40" height="30" className="d-inline-block align-top" />{" "}
+          <Navbar.Brand as={Link} to="home" className="navigation-brand">
+            <img
+              alt=""
+              src={logo}
+              width="40"
+              height="30"
+              className="d-inline-block align-top"
+            />{" "}
             <p className="navigation-brand-txt">ANONIMI</p>
           </Navbar.Brand>
 
           <Navbar.Collapse className="justify-content-center centered-nav">
             <Nav>
-              <NavDropdown title="Product" id="basic-nav-dropdown" className="centered-nav-item">
-                <NavDropdown.Item href="anonimi-features">Features overview</NavDropdown.Item>
-                <NavDropdown.Item href="anonimi-platform">Anonimi platform</NavDropdown.Item>
-                <NavDropdown.Item href="about-ai">Face anonymization</NavDropdown.Item>
-                <NavDropdown.Item href="about-ai">Licence plates detection</NavDropdown.Item>
-                <NavDropdown.Item href="anonimi-platform">Watermarks</NavDropdown.Item>
-                <NavDropdown.Item href="anonimi-features">Api access</NavDropdown.Item>
+              <NavDropdown
+                title="Product"
+                id="basic-nav-dropdown"
+                className="centered-nav-item">
+                <NavDropdown.Item href="anonimi-features">
+                  Features overview
+                </NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-platform">
+                  Anonimi platform
+                </NavDropdown.Item>
+                <NavDropdown.Item href="about-ai">
+                  Face anonymization
+                </NavDropdown.Item>
+                <NavDropdown.Item href="about-ai">
+                  Licence plates detection
+                </NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-platform">
+                  Watermarks
+                </NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-features">
+                  Api access
+                </NavDropdown.Item>
                 <Dropdown.Divider />
                 <NavDropdown.Item href="home">Showcase</NavDropdown.Item>
                 <NavDropdown.Item href="api">Demo</NavDropdown.Item>
                 <Dropdown.Divider />
                 <NavDropdown.Item href="home">Industries</NavDropdown.Item>
                 <Dropdown.Divider />
-                <NavDropdown.Item href="about-ai">Documentations</NavDropdown.Item>
+                <NavDropdown.Item href="about-ai">
+                  Documentations
+                </NavDropdown.Item>
                 <NavDropdown.Item href="home">FAQ</NavDropdown.Item>
-                
               </NavDropdown>
 
               <Nav.Link as={Link} to="pricing" className="centered-nav-item">
                 Pricing
               </Nav.Link>
 
-              <NavDropdown title="About" id="basic-nav-dropdown" className="centered-nav-item">
-              <NavDropdown.Item href="about">Our vision</NavDropdown.Item>
+              <NavDropdown
+                title="About"
+                id="basic-nav-dropdown"
+                className="centered-nav-item">
+                <NavDropdown.Item href="about">Our vision</NavDropdown.Item>
                 <NavDropdown.Item href="about">Team</NavDropdown.Item>
-                <NavDropdown.Item href="anonimi-platform">Privacy</NavDropdown.Item>
+                <NavDropdown.Item href="anonimi-platform">
+                  Privacy
+                </NavDropdown.Item>
                 <Dropdown.Divider />
-                <NavDropdown.Item href="anonimi-platform">Contact Us</NavDropdown.Item>
-
+                <NavDropdown.Item href="anonimi-platform">
+                  Contact Us
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -85,11 +113,11 @@ export default function NavigationBar() {
                   </button>
                 ) : (
                   <div style={{ display: "flex" }}>
-                    <Nav.Link href="login">
+                    <Nav.Link as={Link} to="login">
                       <button className="btn-login">Sign in</button>
                     </Nav.Link>
 
-                    <Nav.Link href="register">
+                    <Nav.Link as={Link} to="register">
                       <button className="btn-register">Try for free</button>
                     </Nav.Link>
                   </div>

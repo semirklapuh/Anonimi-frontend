@@ -2,7 +2,7 @@
   /* background-color: black; */
   background: inherit;
   min-height: 760px;
-  min-width: 500px;
+  /* min-width: 500px; */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -21,9 +21,6 @@
 
   border: 0.756654px solid #fbfbfb;
   border-radius: 15.1331px;
-}
-#password {
-  height: auto;
 }
 
 .btn-icon {
@@ -180,7 +177,7 @@
   gap: 10.59px;
 
   width: 398px;
-  height: 433.56px;
+  /* height: 433.56px; */
   left: calc(50% - 398px / 2 + 1px);
   top: 232px;
 }
@@ -229,4 +226,21 @@ input:focus {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+#password,
+#confirmPassword {
+  height: auto;
+}
+.background__content {
+  background-image: url("../../assets/Sign\ up.png");
+}
+
+.register__fix {
+  padding-top: 6rem;
+}
+
+.contactDiv__register {
+  margin-top: 9rem;
+  color: white;
 }
