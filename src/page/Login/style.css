@@ -137,6 +137,7 @@
 
   display: flex;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .login__signInWithButton:hover {
@@ -148,7 +149,6 @@
 }
 
 .google-image {
-  /* background: url("../../assets/icons8-google-48.png"); */
   float: left;
   width: 30px;
   height: 30px;
@@ -161,11 +161,15 @@
   margin-left: 1rem;
 }
 
-.contactDiv{
-    color: white;
-    padding-top: 5rem;
+.contactDiv {
+  color: white;
+  padding-top: 5rem;
 }
 
-.pt{
-    padding-top: 12rem;
+.pt {
+  padding-top: 12rem;
+}
+
+.login__form__googleLogin {
+  width: 100%;
 }

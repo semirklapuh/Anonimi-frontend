@@ -2,26 +2,23 @@
 @import "~@fontsource/roboto";
 
 * {
-
-    font-family: "Lato";
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
-
+  font-family: "Lato";
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
-    font-family: "Roboto";
+  font-family: "Roboto";
 }
 
 .showcase-section {
-    background-color: hsl(189, 86%, 16%);
-    min-height: 900px;
-    margin-top: 20px;
-    color: #FBFBFB;
+  background-color: hsl(189, 86%, 16%);
+  height: 100vh;
+  margin-top: 20px;
+  color: #fbfbfb;
 }
 
 .showcase-header {
-    padding: 40px 0 0 0;
+  padding: 5rem 0 0 0;
 }
