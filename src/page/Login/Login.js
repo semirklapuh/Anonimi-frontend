@@ -7,6 +7,7 @@ import "./style.css";
 import googleLoginIcon from "../../assets/icons8-google-48.png";
 import facebookLoginIcon from "../../assets/icons8-facebook-48.png";
 import appleLoginIcon from "../../assets/apple-logo.png";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ const Login = () => {
   //dodao status za verified response, display error da prikaze error message ako nije loginan
   const [status, setStatus] = useState(false);
   const [displayError, setDisplayError] = useState(false);
+  const [token, setToken] = useState("");
 
   const form = useRef();
 
@@ -70,7 +72,10 @@ const Login = () => {
         .then((res) => {
           //kupim verified response iz objekta
           setStatus(res.data.verified);
-          localStorage.setItem("user", res.data.token);
+          setToken(res.data.token);
+          // Cookies.set("user", res.data.token)
+
+          // localStorage.setItem("user", res.data.token);
         });
 
       //na osnovu statusa mjenjam error display
@@ -96,7 +101,10 @@ const Login = () => {
   useEffect(() => {
     if (status) {
       setDisplayError(false);
-      window.location.href = "/home";
+      // window.location.href = "/home";
+      // window.location.href =
+      // "http://ec2-54-216-73-116.eu-west-1.compute.amazonaws.com:3000";
+      window.location.href = `http://ec2-54-216-73-116.eu-west-1.compute.amazonaws.com:3000/?token=${token}`;
     }
   }, [status]);
 
@@ -205,19 +213,25 @@ const Login = () => {
               <div className="login__OR">- OR -</div>
 
               <div className="login__signInWith">
-                <button
-                  type="submit"
-                  className="login__signInWithButton"
-                  disabled={false}>
-                  <img
-                    src={googleLoginIcon}
-                    height="25px"
-                    width="25px"
-                    alt=""
-                  />
-                  <span className="">Continue with Google</span>
-                </button>
-                <button
+                <form
+                className="login__form__googleLogin"
+                  method="GET"
+                  action="https://272e-217-75-204-126.eu.ngrok.io/api/v1/user/google-login">
+                  <button
+                    type="submit"
+                    className="login__signInWithButton"
+                    disabled={false}>
+                    <img
+                      src={googleLoginIcon}
+                      height="25px"
+                      width="25px"
+                      alt=""
+                    />
+                    <span className="">Continue with Google</span>
+                  </button>
+                </form>
+
+                {/* <button
                   type="submit"
                   className="login__signInWithButton"
                   disabled={false}>
@@ -235,7 +249,7 @@ const Login = () => {
                   disabled={false}>
                   <img src={appleLoginIcon} height="25px" width="25px" alt="" />
                   <span>Continue with Apple</span>
-                </button>
+                </button> */}
               </div>
               <div className="auth-option text-center pt-2 prgf">
                 Don’t have an account?{" "}
