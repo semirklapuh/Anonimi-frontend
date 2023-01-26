@@ -104,7 +104,9 @@ const Login = () => {
       // window.location.href = "/home";
       // window.location.href =
       // "http://ec2-54-216-73-116.eu-west-1.compute.amazonaws.com:3000";
+      
       window.location.href = `http://ec2-54-216-73-116.eu-west-1.compute.amazonaws.com:3000/?token=${token}`;
+
     }
   }, [status]);
 
