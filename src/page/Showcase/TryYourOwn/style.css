@@ -75,6 +75,12 @@
     flex-direction: row;
 }
 
+.dropdowns__tryYourOwn{
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: row;
+}
+
 .dropdown, .btn-div {
     padding: 20px
 }
@@ -86,9 +92,10 @@
 }
 
 .preview-image {
-    width: 550px;
+    width: auto;
     height: auto;
     padding: 10px;
+    max-height: 400px;
 }
 
 .preview-container {

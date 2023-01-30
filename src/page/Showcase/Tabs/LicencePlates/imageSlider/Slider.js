@@ -20,6 +20,7 @@ const Slider = () => {
 
   const handleChangeChecked = (switchChecked) => {
     setSwitchChecked(switchChecked);
+    handleBlur()
   };
   const handleBlur = () => {
     setBlur(true);
@@ -148,28 +149,54 @@ const Slider = () => {
         </div>
       </div>
       <div className="row-btn">
-        <ButtonGroup aria-label="primary button group">
-          <Button
-            className="type-btn"
+        <div className={ switchChecked? "showcase__button__group" : "showcase__button__group__disabled"}>
+          {/* <Button
             onClick={handleBlur}
-            id="first1"
-            disabled={true}
+            id="first"
+            name="first"
+            className={active === "first" ? `${classes.activeButton}` : ""}
           >
             Blur
           </Button>
-          <Button className="type-btn" onClick={handleBlur} id="second1">
+          <Button
+            name="second"
+            // className={active === "second" ? `${classes.activeButton}` : ""}
+            color="inherit"
+            ba
+            onClick={handlePixelated}
+            id="second"
+          >
             Pixelated
           </Button>
 
-          <Button className="type-btn" id="third1" disabled={true}>
+          <Button
+            className={active === "third" ? `${classes.activeButton}` : ""}
+            name="third"
+            onClick={handleDeepNatural}
+            id="third"
+          >
             Deep natural
-          </Button>
-        </ButtonGroup>
+          </Button> */}
+          <button className={blur && switchChecked ? "showcase__button__disabled": "showcase__button__disabled"} ><span className="showcase__button__span">Blur</span></button>
+          <button className={switchChecked ? "showcase__button__active": "showcase__button"}><span className="showcase__button__span">Pixelated</span></button>
+          <button className={blur && switchChecked ? "showcase__button__disabled": "showcase__button__disabled"}><span className="showcase__button__span">Deep natural</span></button>
+        </div>
       </div>
       <div className="switch-box">
-        <label className="switch-label">Original</label>
-        <Switch onChange={handleChangeChecked} checked={switchChecked} />
-        <label className="switch-label">Anonymize</label>
+        <label className="switch-label">Reveal</label>
+        <Switch 
+        handleDiameter={14}
+        width={36}
+        height={18}
+        offColor="#D9DEE2"
+        onColor="#C6F985"
+        onHandleColor="#184952"
+        offHandleColor="#184952"
+        checkedIcon={false}
+        uncheckedIcon={false}
+        onChange={handleChangeChecked} 
+        checked={switchChecked} />
+        <label className="switch-label" style={{color:"#C6F985"}}>Anonymize</label>
       </div>
     </div>
   );

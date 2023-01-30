@@ -5,7 +5,7 @@ import "./style.css";
 const ButtonsGroup = () => {
   return (
     <div className="row">
-      <ButtonGroup aria-label="primary button group">
+      <ButtonGroup aria-label="outlined button group" className="button_group">
         <Button size="small" className="type-btn">
           Pixelated
         </Button>

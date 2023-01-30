@@ -14,8 +14,9 @@ h1 {
 
 .showcase-section {
   background-color: hsl(189, 86%, 16%);
+  background-image: url(/src/assets/Sign\ up.png);
+  background-size: contain;
   height: 100vh;
-  margin-top: 20px;
   color: #fbfbfb;
 }
 

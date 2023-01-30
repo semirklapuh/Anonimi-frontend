@@ -30,6 +30,8 @@ function Upload({ onDrop, maxFiles = 1 }) {
   const [modeDropDownValue, setModeDropDownValue] = useState("Mode");
   const [objectDropDownValue, setObjectDropDownValue] = useState("Object");
 
+  const[loader, setLoader]=useState(false)
+
   const changeModeValue = (text) => {
     setModeDropDownValue(text);
   };
@@ -80,7 +82,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
 
   const submitAnonymize = async (e) => {
     e.preventDefault();
-
+    setLoader(true)
     const imageData = {
       image: imageUrl,
       faces: faces,
@@ -95,6 +97,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
         console.log(res.data);
         setDataURL(res.data.image);
         setPreviewImage(true);
+        setLoader(false)
       });
   };
 
@@ -220,10 +223,12 @@ function Upload({ onDrop, maxFiles = 1 }) {
                       Please select the type of object and type of anonymization
                       you want..
                     </p>
-                    <p className="paragraf">
+                    {/* <p className="paragraf">
                       The image is being processed, please wait a few moments
                     </p>
-                    <LoaderSpinner />
+                     <LoaderSpinner />  */
+                     
+                     loader?<LoaderSpinner/>:<p></p>}
                   </div>
                 )}
               </div>
@@ -252,7 +257,7 @@ function Upload({ onDrop, maxFiles = 1 }) {
           </div>
 
           <div>
-            <div className="dropdowns">
+            <div className="dropdowns__tryYourOwn">
               <DropdownButton
                 id="dropdown-item-button"
                 title={objectDropDownValue}
